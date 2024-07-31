@@ -15,7 +15,7 @@ function adminLayout() {
       setAuthTextController(true);
       try {
           setAuthtext("Authorizing");
-          const response = await fetch("http://localhost:3000/admin/checkAuth", {
+          const response = await fetch("https://tile-back-end.onrender.com/admin/checkAuth", {
               method: "GET",
               credentials: "include"
           });

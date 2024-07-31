@@ -6,7 +6,7 @@ import type { Post } from "../Statemanagement/Slices/postSlice"
 
 const updatePostRequest = async (post: Post) => {
     console.log('your are in request ')
-    const response = await fetch('http://localhost:3000/post/updatePost', {
+    const response = await fetch('https://tile-back-end.onrender.com/post/updatePost', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

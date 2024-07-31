@@ -50,7 +50,7 @@ const FormExample: React.FC = () => {
     formData.append('image', values.image || '');
 
     // Handle form submission logic here, e.g., send data to server or update state
-    await fetch('http://localhost:3000/post/addNewPost',
+    await fetch('https://tile-back-end.onrender.com/post/addNewPost',
       {
         method: 'POST',
         body: formData,
