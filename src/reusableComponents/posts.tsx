@@ -19,9 +19,9 @@ function posts() {
     }, [])
     return (
         <>
-            <div className="space-between p-[1rem] maxlg:flex ">
+            <div className="space-between p-[1rem] grid grid-cols-3 max-md:grid-cols-1 ">
                 {posts.map((post) => (
-                    <li key={post._id}  className=" border list-none rounded-lg m-[1rem] ">
+                    <li key={post._id}  className=" w-fit border list-none rounded-lg m-[1rem] dark:border-none ">
                         <PostCard post={post} />
                     </li>
                 ))}

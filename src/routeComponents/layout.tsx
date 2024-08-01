@@ -6,7 +6,7 @@ export default function Layout() {
 
   return (
     <>
-      <div className="bg-[#f0f5f7] font-mono text-[#566169]">
+      <div className="bg-[#f0f5f7] dark:bg-[#303536] font-mono text-[#566169] dark:text-white">
         <Header />
         <Outlet />
         <Footer />
