@@ -1,12 +1,14 @@
 
 import Posts from "../../reusableComponents/posts";
+import { Suspense } from "react";
+
 function home() {
 
     return (
         <>
-            <Posts />
+                <Posts />
         </>
-            )
+    )
 }
 
-            export default home
+export default home
