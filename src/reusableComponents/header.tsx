@@ -4,7 +4,6 @@ import { AppDispatch, RootState } from '../Statemanagement/store';
 import logo from '../assets/profilePic.png';
 import lightIcon from '../assets/lightThemeIcon.png';
 import darktIcon from '../assets/darkThemeIcon.png';
-import reactlogo from '../assets/react.svg';
 import { initializeUser } from '../Statemanagement/Slices/userSlice';
 const Header: React.FC = () => {
     const [darkMode, setDarkMode] = useState(false);
@@ -26,8 +25,7 @@ const Header: React.FC = () => {
     return (
         <header className="flex items-center justify-between p-4   shadow-md rounded-b-[1rem] ">
             <div className="flex items-center">
-                <img src={reactlogo} alt="React Logo" className="h-10 w-10" />
-                <span className="ml-2 text-xl font-bold dark:text-white">MyApp</span>
+                <span className="ml-2 text-xl font-bold dark:text-white">𝓣𝓮𝔁𝓸𝓣𝓲𝓵𝓮𝓼</span>
             </div>
             <div className="flex items-center">
                 <button
@@ -36,8 +34,7 @@ const Header: React.FC = () => {
                 >
                     <img src={darkMode ? lightIcon : darktIcon} alt="themModes" className="h-6 w-6 rounded-full " />
                 </button>
-                {user.name}
-                <img src={user.profilePic ? user.profilePic : logo} alt="Profile" className="h-10 w-10 rounded-full " />
+                {user.profilePic && <img src={user.profilePic ? user.profilePic : logo} alt="Profile" className="h-10 w-10 rounded-full " />}
             </div>
         </header>
     );

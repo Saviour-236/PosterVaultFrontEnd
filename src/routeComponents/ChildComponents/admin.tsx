@@ -6,7 +6,8 @@ function admin() {
     return (
         <>
             <Toaster position="top-right"
-            /><div className="h-[90vh]">
+            />
+            <div className="h-[90vh]">
                 <AdminPosts />
                 <AddPost />
             </div>

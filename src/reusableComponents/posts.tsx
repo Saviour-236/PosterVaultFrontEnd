@@ -23,7 +23,7 @@ function posts() {
         console.log("loading")
         return (
             <>
-                <div className="space-between border border-black p-[1rem] grid grid-cols-3 max-md:grid-cols-1 ">
+                <div className="space-between p-[1rem] grid grid-cols-3 max-md:grid-cols-1 gap-y-[1rem]">
                     <div id="firstDiv" className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
                         <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
                             <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
@@ -65,9 +65,10 @@ function posts() {
     return (
         <>
 
-            <div className="space-between border border-black p-[1rem] grid grid-cols-3 max-md:grid-cols-1 ">
+            <div className="space-between  p-[1rem] grid grid-cols-3 max-md:grid-cols-1 ">
                 {posts.map((post) => (
-                    <li key={post._id} className=" w-fit border list-none rounded-lg m-[1rem] dark:border-none ">
+                    <li key={post._id} className=" w-fit border list-none rounded-lg m-[1rem] dark:border-none hover:z-10"
+                    >
                         <PostCard post={post} />
                     </li>
                 ))}
