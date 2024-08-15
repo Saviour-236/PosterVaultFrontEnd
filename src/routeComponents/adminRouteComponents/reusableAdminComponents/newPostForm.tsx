@@ -55,6 +55,7 @@ const FormExample: React.FC = () => {
         method: 'POST',
         body: formData,
         credentials: 'include',
+        mode: 'no-cors'
       })
       .then(response => response.json())
       .then(data => 
@@ -63,8 +64,8 @@ const FormExample: React.FC = () => {
         toast.success('Post added successfully')
        }
     )
-      .catch(err => {
-        console.log(err.message)
+      .catch( err => {
+        console.log("thid is error",err.message)
         toast.error(err.message)
       })
 

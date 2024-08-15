@@ -13,7 +13,7 @@ const SignInForm = () => {
     event.preventDefault();
     if (validateForm()) {
       const lodingToast = toast.loading('signing in...');
-      // Perform your sign-in logic here (e.g., API call)
+      // Perform your sign-in logic here (e.g., API call)  
       await fetch('https://tile-back-end.onrender.com/auth/signIn', {
         method: 'POST',
         credentials: 'include',
