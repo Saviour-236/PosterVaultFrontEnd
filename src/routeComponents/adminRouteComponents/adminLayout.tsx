@@ -28,8 +28,8 @@ function adminLayout() {
       setAuthTextController(false);
       setAuthorized(true);
       return;
-    } catch (error) {
-      let err = error.message;
+    } catch (error:any) {
+      const err = error.message;
       setAuthtext(err);
       navigate("/signIn");
     }
