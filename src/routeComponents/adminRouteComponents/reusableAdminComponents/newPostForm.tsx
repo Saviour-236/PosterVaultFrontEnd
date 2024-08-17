@@ -55,7 +55,7 @@ const FormExample: React.FC = () => {
         method: 'POST',
         body: formData,
         credentials: 'include',
-        mode: 'no-cors'
+        mode: 'cors'
       })
       .then(response => {
         console.log("this is response",response)
