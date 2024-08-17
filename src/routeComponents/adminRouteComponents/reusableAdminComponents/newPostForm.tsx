@@ -50,16 +50,31 @@ const FormExample: React.FC = () => {
     formData.append('image', values.image || '');
 
     //   Handle form submission logic here, e.g., send data to server or update state
-    const response1 = await fetch('https://tile-back-end.onrender.com/post/addNewPost',
+    await fetch('https://tile-back-end.onrender.com/post/addNewPost',
       {
         method: 'POST',
         body: formData,
         credentials: 'include',
         mode: 'no-cors'
       })
-      
-      console.log("this is response",response1);
-    // Reset form fields after submission if needed
+      .then(response => {
+        console.log("this is response",response)
+        console.log("this is response",response.json()) 
+        return response.json()})
+      .then(data => 
+       {
+        console.log("this is data",data)
+         dispatch(addPostReducer(data.user))
+        toast.success('Post added successfully')
+        console.log('Post added successfully')
+       }
+    )
+      .catch( err => {
+        console.log("thid is error",err)
+        toast.error(err.message)
+      })
+
+   // Reset form fields after submission if needed
     // setValues({
     //   title: '',
     //   alt: '',
