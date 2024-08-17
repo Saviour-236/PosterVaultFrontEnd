@@ -49,34 +49,24 @@ const FormExample: React.FC = () => {
     formData.append('price', values.price);
     formData.append('image', values.image || '');
 
-    // Handle form submission logic here, e.g., send data to server or update state
-    await fetch('https://tile-back-end.onrender.com/post/addNewPost',
+    //   Handle form submission logic here, e.g., send data to server or update state
+    const response1 = await fetch('https://tile-back-end.onrender.com/post/addNewPost',
       {
         method: 'POST',
         body: formData,
         credentials: 'include',
         mode: 'no-cors'
       })
-      .then(response => response.json())
-      .then(data => 
-       {
-         dispatch(addPostReducer(data.user))
-        toast.success('Post added successfully')
-       }
-    )
-      .catch( err => {
-        console.log("thid is error",err.message)
-        toast.error(err.message)
-      })
-
-   // Reset form fields after submission if needed
-    setValues({
-      title: '',
-      alt: '',
-      description: '',
-      image: null,
-      price: '',
-    });
+      
+      console.log("this is response",response1);
+    // Reset form fields after submission if needed
+    // setValues({
+    //   title: '',
+    //   alt: '',
+    //   description: '',
+    //   image: null,
+    //   price: '',
+    // });
   };
   //for fade in animation
   useEffect(() => {

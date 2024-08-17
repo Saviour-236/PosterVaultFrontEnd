@@ -37,9 +37,7 @@ function adminLayout() {
   if (!authText) checkAuth();
   if (Object.keys(user).length === 0) {
     const user = localStorage.getItem('user');
-    console.log(user)
     if (user !== null) {
-      console.log('user is not null')
       dispatch(initializeUser(JSON.parse(user)));
     }
   }
