@@ -59,7 +59,6 @@ const FormExample: React.FC = () => {
       })
       .then(response => {
         console.log("this is response",response)
-        console.log("this is response",response.json()) 
         return response.json()})
       .then(data => 
        {
