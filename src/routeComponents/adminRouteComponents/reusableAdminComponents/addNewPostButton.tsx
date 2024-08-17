@@ -2,18 +2,20 @@
 import { useState } from "react"
 import NewPostForm from './newPostForm'
 import add from '../../../assets/add.png'
-
+import cross from '../../../assets/cross.png'
 function addNewPost() {
   const [showFrom, setShowForm] = useState<boolean>(false)
   const handleAddButton = () => {
-    setShowForm(true)
+    setShowForm(!showFrom)
   }
  
   return (
     <>
       {showFrom && <NewPostForm />}
       <button onClick={handleAddButton} className="fixed  bottom-8 right-10">
-        <img src={add} alt="" className="h-[4rem]"/>
+      {showFrom
+      ? <img src={cross} alt="" className="h-[4rem]"/> 
+      : <img src={add} alt="" className="h-[3.5 rem]"/>} 
       </button>
     </>
   )

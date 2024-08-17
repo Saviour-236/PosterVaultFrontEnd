@@ -20,7 +20,6 @@ function posts() {
             })
     }, [])
     if (posts.length === 0) {
-        console.log("loading")
         return (
             <>
                 <div className="space-between p-[1rem] grid grid-cols-3 max-md:grid-cols-1 gap-y-[1rem]">
@@ -65,9 +64,9 @@ function posts() {
     return (
         <>
 
-            <div className="space-between  p-[1rem] grid grid-cols-3 max-md:grid-cols-1 ">
+            <div className="space-between  p-[1rem] grid grid-cols-4 max-md:grid-cols-1 ">
                 {posts.map((post) => (
-                    <li key={post._id} className=" w-fit border list-none rounded-lg m-[1rem] dark:border-none hover:z-10"
+                    <li key={post._id} className=" w-fit list-none rounded-lg m-[1rem] dark:border-none hover:z-10"
                     >
                         <PostCard post={post} />
                     </li>

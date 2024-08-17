@@ -58,29 +58,30 @@ const FormExample: React.FC = () => {
         mode: 'cors'
       })
       .then(response => {
-        console.log("this is response",response)
+        //console.log("this is response",response)
         return response.json()})
       .then(data => 
        {
-        console.log("this is data",data)
+      //  console.log("this is data",data)
          dispatch(addPostReducer(data.user))
         toast.success('Post added successfully')
-        console.log('Post added successfully')
+       // console.log('Post added successfully')
        }
     )
       .catch( err => {
-        console.log("thid is error",err)
+       // console.log("thid is error",err)
         toast.error(err.message)
       })
 
-   // Reset form fields after submission if needed
-    // setValues({
-    //   title: '',
-    //   alt: '',
-    //   description: '',
-    //   image: null,
-    //   price: '',
-    // });
+   //Reset form fields after submission if needed
+    setValues({
+
+      title: '',
+      alt: '',
+      description: '',
+      image: null,
+      price: '',
+    });
   };
   //for fade in animation
   useEffect(() => {
