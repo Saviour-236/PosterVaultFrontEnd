@@ -1,5 +1,5 @@
 
-import Posts from "../../reusableComponents/posts";
+import Posts from "../reusableComponents/posts";
 
 function home() {
 

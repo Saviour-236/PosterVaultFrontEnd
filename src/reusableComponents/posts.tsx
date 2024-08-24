@@ -64,7 +64,7 @@ function posts() {
     return (
         <>
 
-            <div className="space-between  p-[1rem] grid grid-cols-4 max-md:grid-cols-1 ">
+            <div className="space-between justify-center flex flex-wrap p-[1rem] grid-cols-4 max-md:grid-cols-1 ">
                 {posts.map((post) => (
                     <li key={post._id} className=" w-fit list-none rounded-lg m-[1rem] dark:border-none hover:z-10"
                     >

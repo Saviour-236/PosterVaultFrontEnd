@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { initializeUser } from '../../Statemanagement/Slices/userSlice'
+import { initializeUser } from '../Statemanagement/Slices/userSlice'
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 const SignInForm = () => {

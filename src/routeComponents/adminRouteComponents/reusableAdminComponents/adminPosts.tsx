@@ -25,9 +25,9 @@ function Adminposts() {
     }, [])
     return (
         <>{loadingBit ? <div className='text-center text-3xl'>Loading...</div>
-            : <div className=' grid grid-cols-4 p-[1rem] gap-[1rem] '>
+            : <div className='space-between justify-center flex flex-wrap p-[1rem] grid-cols-4 max-md:grid-cols-1w'>
                 {posts.map((post: Post) => {
-                    return <li key={post._id} className='list-none mx-auto ' >
+                    return <li key={post._id} className='list-none m-5' >
                         <AdminPostCard post={post} />
                     </li>
                 }

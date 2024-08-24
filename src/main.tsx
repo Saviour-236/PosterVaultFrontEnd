@@ -15,9 +15,9 @@ import { Provider } from 'react-redux'
 import store from './Statemanagement/store'
 
 //page components 
-import HomePage from './routeComponents/ChildComponents/home'
-import SignInPage from './routeComponents/ChildComponents/signIn'
-import AdminPage from './routeComponents/ChildComponents/admin'
+import HomePage from './routeComponents/home'
+import SignInPage from './routeComponents/signIn'
+import AdminPage from './routeComponents/admin'
 
 
 //layout components

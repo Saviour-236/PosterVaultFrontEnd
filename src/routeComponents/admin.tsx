@@ -1,5 +1,5 @@
-import AdminPosts from "../adminRouteComponents/reusableAdminComponents/adminPosts";
-import AddPost from "../adminRouteComponents/reusableAdminComponents/addNewPostButton";
+import AdminPosts from "./adminRouteComponents/reusableAdminComponents/adminPosts";
+import AddPost from "./adminRouteComponents/reusableAdminComponents/addNewPostButton";
 import { Toaster } from "react-hot-toast";
 
 function admin() {
@@ -7,7 +7,7 @@ function admin() {
         <>
             <Toaster position="top-right"
             />
-            <div className="h-[90vh]">
+            <div className="">
                 <AdminPosts />
                 <AddPost />
             </div>

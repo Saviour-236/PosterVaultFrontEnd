@@ -15,7 +15,7 @@ function addNewPost() {
       <button onClick={handleAddButton} className="fixed  bottom-8 right-10">
       {showFrom
       ? <img src={cross} alt="" className="h-[4rem]"/> 
-      : <img src={add} alt="" className="h-[3.5 rem]"/>} 
+      : <img src={add} alt="" className="h-[3.5rem]"/>} 
       </button>
     </>
   )
