@@ -46,31 +46,31 @@ const PostCard: React.FC<Props> = ({ post }) => {
     };
 
     //handle the edit event
-    const handleEditClick = (e: Event) => {
-        if (e.target.id === "cross") {
+    const handleEditClick = (e:any) => {
+        if (e.target.id == "cross") {
             setPostData(post);
         }
         setInEditMode(!inEditMode);
 
     };
 
-    const handleSaveEvent = () => {
-        setInEditMode(false);
-        dispatch(updatePostReducer(postData));
-        updatePostRequest(postData)
-            .then(async (response) => {
-                if (!response.ok) {
-                    const err = await response.json();
-                    throw new Error(err.message);
-                }
-                toast.success("Post Updated");
-                return response.json();
-            })
-            .catch((err) => {
-                toast.error(err.message);
-                return err;
-            });
-    }
+    // const handleSaveEvent = () => {
+    //     setInEditMode(false);
+    //     dispatch(updatePostReducer(postData));
+    //     updatePostRequest(postData)
+    //         .then(async (response) => {
+    //             if (!response.ok) {
+    //                 const err = await response.json();
+    //                 throw new Error(err.message);
+    //             }
+    //             toast.success("Post Updated");
+    //             return response.json();
+    //         })
+    //         .catch((err) => {
+    //             toast.error(err.message);
+    //             return err;
+    //         });
+    // }
 
     //handling the change event for data handling
 
@@ -181,16 +181,16 @@ const PostCard: React.FC<Props> = ({ post }) => {
                         <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                             {/* Edit  button */}
                             <IndentifyingTextOnHover text="Edit">
-                                <button
+                                <div
                                     className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
-                                    onClick={handleEditClick}
+                                    
                                 >
                                     {inEditMode ? (
-                                        <img id="cross" src={cross} alt="" className="h-[2rem] " />
+                                        <img id="cross" onClick={handleEditClick} src={cross} alt="" className="h-[2rem] " />
                                     ) : (
-                                        <img id="edit" src={edit} alt="" className="h-[2rem] " />
+                                        <img id="edit" onClick={handleEditClick} src={edit} alt="" className="h-[2rem] " />
                                     )}
-                                </button>
+                                </div>
                             </IndentifyingTextOnHover>
                             <IndentifyingTextOnHover text="Delete">
                                 <button className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3">
