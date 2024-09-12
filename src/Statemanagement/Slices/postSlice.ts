@@ -1,6 +1,6 @@
 import { createSlice , PayloadAction} from '@reduxjs/toolkit';
 export interface Post {
-    _id: number;
+    _id: string;
     title: string;
     description: string;
     views: number;
@@ -24,9 +24,13 @@ const postSlice = createSlice({
             // Add post to the state array
             state.unshift(action.payload);
         },
-        deletePostReducer: (state, action: PayloadAction<Post>) => {
+        deletePostReducer: (state, action: PayloadAction<Post["_id"]>) => {
             // Delete post from the state array
-         return   state.filter((post) => post._id !== action.payload._id);
+         return   state.filter((post) => {
+            if(post._id !== action.payload){
+                return post
+            }
+        });
         },
         updatePostReducer: (state, action: PayloadAction<Post>) => {
           return state.forEach((post) => {

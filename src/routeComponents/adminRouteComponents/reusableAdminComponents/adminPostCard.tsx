@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+    deletePostReducer,
     Post,
     updatePostReducer
 } from "../../../Statemanagement/Slices/postSlice";
@@ -11,7 +12,8 @@ import deleteIcon from "../../../assets/delete.png";
 import tik from "../../../assets/tik.png";
 import cross from "../../../assets/cross.png";
 import IndentifyingTextOnHover from "../../../utilities/IndentifyingTextOnHover";
-
+import save from "../../../assets/save.png";
+import deletePostRequest from "../../../utilities/deleteRequests";
 interface Props {
     post: Post;
 }
@@ -20,44 +22,20 @@ interface Props {
 
 const PostCard: React.FC<Props> = ({ post }) => {
     const [isVisible, setIsVisible] = useState(false);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [inEditMode, setInEditMode] = useState(false);
-
     const [postData, setPostData] = useState(post);
+    const [image, setImage] = useState<File>();
+    const dispatch = useDispatch();
+    let formData = new FormData();
+
 
     // for handling the enable disable of image
-    const handleEnableClick = () => {
-        const updatedPost = { ...post, enable: !post.enable };
-        dispatch(updatePostReducer(updatedPost));
-        console.log("goind for update");
-        updatePostRequest(updatedPost)
-            .then(async (response) => {
-                if (!response.ok) {
-                    const err = await response.json();
-                    throw new Error(err.message);
-                }
-                toast.success("Post Updated");
-                return response.json();
-            })
-            .catch((err) => {
-                toast.error(err.message);
-                return err;
-            });
-    };
-
-    //handle the edit event
-    const handleEditClick = (e:any) => {
-        if (e.target.id == "cross") {
-            setPostData(post);
-        }
-        setInEditMode(!inEditMode);
-
-    };
-
-    // const handleSaveEvent = () => {
-    //     setInEditMode(false);
-    //     dispatch(updatePostReducer(postData));
-    //     updatePostRequest(postData)
+    // const handleEnableClick = () => {
+    //     const updatedPost = { ...post, enable: !post.enable };
+    //     dispatch(updatePostReducer(updatedPost));
+    //     console.log("goind for update");
+    //     updatePostRequest(updatedPost)
     //         .then(async (response) => {
     //             if (!response.ok) {
     //                 const err = await response.json();
@@ -70,18 +48,59 @@ const PostCard: React.FC<Props> = ({ post }) => {
     //             toast.error(err.message);
     //             return err;
     //         });
-    // }
+    // };
+
+    //handle the edit event
+    const handleEditClick = (e: any) => {
+        if (e.target.id == "cross") {
+            setPostData(post);
+        }
+        setInEditMode(!inEditMode);
+
+    };
+    // ------------------------Handling save event---------------------
+    const handleSaveEvent = () => {
+
+        formData.append("image", image || postData.imageUrl);
+        formData.append("Data", JSON.stringify(postData));
+        //for toast controll
+        let toastId = toast.loading("Updating Post");
+        updatePostRequest(formData)
+            .then(async (response) => {
+                formData = new FormData();
+                toast.dismiss(toastId);
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.message);
+                }
+                return response.json();
+            })
+            .then((data) => {
+               // console.log(data);
+                dispatch(updatePostReducer(data));
+                toast.success("Post Updated");
+                setInEditMode(false);
+                //   dispatch(updatePostReducer(postData));
+            })
+            .catch((err) => {
+                toast.dismiss(toastId);
+                toast.error(err.message);
+                return err;
+            });
+
+    }
 
     //handling the change event for data handling
 
     const handleChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(postData)
-        console.log(e.target.id);
+        // console.log(postData)
+        //console.log(e.target.id);
         switch (e.target.id) {
             case "file":
-                console.log("file");
-                console.log(e.target.files && e.target.files[0]);
+                //   console.log("file");
+                //  console.log(e.target.files && e.target.files[0]);
                 if (e.target.files && e.target.files[0]) {
+                    setImage(e.target.files[0]);
                     setPostData({ ...postData, imageUrl: URL.createObjectURL(e.target.files[0]) });
                 }
                 break;
@@ -93,7 +112,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                 setPostData({ ...postData, description: e.target.value });
                 break;
             case "price":
-                if(e.target.value.length>4){
+                if (e.target.value.length > 4) {
                     toast.error("Price should be less than 9000");
                     break;
                 }
@@ -106,7 +125,21 @@ const PostCard: React.FC<Props> = ({ post }) => {
 
     // handling the close event of edit mode
 
-
+// handling Delete event
+    const handleDeleteEvent = (id:string) => {
+   //console.log(id)
+    deletePostRequest(id)
+    .then(res => {
+        //console.log(res)
+        if(!res.ok ){
+            throw new Error(res.statusText)
+        }
+    })
+    .catch(err => {
+        toast.error(err.toString())
+    })
+   dispatch(deletePostReducer(id))
+    }
     useEffect(() => {
         setIsVisible(true);
     });
@@ -147,7 +180,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                             onChange={handleChangeEvent}
                             value={postData.title}
                             className={`text-[1rem] block w-full outline-none ${inEditMode
-                                ? "border rounded p-2 border-[#237392] "
+                                ? "border rounded-md p-2  "
                                 : "border-none"
                                 }`}
                             disabled={!inEditMode}
@@ -169,7 +202,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                             id="discription"
                             value={postData.description}
                             className={`ext-[0.7rem] w-full block italic break-word ${inEditMode
-                                ? "border outline-none rounded  border-[#237392] p-2"
+                                ? "border outline-none rounded-md p-2"
                                 : "border-none"
                                 }`}
                             disabled={!inEditMode}
@@ -182,8 +215,8 @@ const PostCard: React.FC<Props> = ({ post }) => {
                             {/* Edit  button */}
                             <IndentifyingTextOnHover text="Edit">
                                 <div
-                                    className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
-                                    
+                                    className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center cursor-pointer text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
+
                                 >
                                     {inEditMode ? (
                                         <img id="cross" onClick={handleEditClick} src={cross} alt="" className="h-[2rem] " />
@@ -193,15 +226,34 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                 </div>
                             </IndentifyingTextOnHover>
                             <IndentifyingTextOnHover text="Delete">
-                                <button className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3">
+                                <button 
+                                className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
+                                onClick={()=>(handleDeleteEvent(post._id))}
+                                >
                                     <img src={deleteIcon} className="h-[2rem]" alt="delete.png" />
                                 </button>
                             </IndentifyingTextOnHover>
 
+
+
+                            {/*  save button*/}
+                            {inEditMode &&
+                                <IndentifyingTextOnHover text="Save">
+                                    <button
+                                        onClick={handleSaveEvent}
+                                        className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3">
+                                        <img
+                                            src={save}
+                                            className="h-[2rem]"
+                                            alt="save" />
+                                    </button>
+                                </IndentifyingTextOnHover>}
+
+
                             {/*  for enable or disable*/}
                             <IndentifyingTextOnHover text="Enable">
                                 <div
-                                    onClick={handleEnableClick}
+                                    // onClick={handleEnableClick}
                                     className=" top-[0.5rem] border border-[#09a5e3] bg-white rounded-full right-[0.5rem] "
                                 >
                                     {post.enable ? (
