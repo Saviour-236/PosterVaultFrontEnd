@@ -38,7 +38,7 @@ const Router = createBrowserRouter([
         path: '/signIn',
         element: <SignInPage />,
       },
-      {
+   {
         path: '/admin',
         element: <AdminLayout />,
         children:[

@@ -1,8 +1,9 @@
+// All delete related  requests
+import {baseAddress} from '../baseAddress';
 
-// delete post request
 async function deletePostRequest(id: string): Promise<Response> {
-        const response = await fetch(`http://localhost:3000/post/deletePost/`,{
-            body:id,
+    console.log(id)
+        const response = await fetch(`${baseAddress}/post/deletePost/${id}`,{
             method:"DELETE",
             credentials:"include",
         });

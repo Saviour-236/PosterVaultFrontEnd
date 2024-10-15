@@ -1,15 +1,5 @@
 import { createSlice , PayloadAction} from '@reduxjs/toolkit';
-export interface Post {
-    _id: string;
-    title: string;
-    description: string;
-    views: number;
-    price: number;
-    imageUrl: string;
-    alt: string;
-    author: string;
-    enable: boolean;
-}
+import { Post } from '../interfaces';
 
 const postSlice = createSlice({
     name: 'Posts',

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import {
     deletePostReducer,
-    Post,
     updatePostReducer
 } from "../../../Statemanagement/Slices/postSlice";
+import { Post } from "../../../Statemanagement/interfaces";
 import { useDispatch } from "react-redux";
-import { updatePostRequest } from "../../../utilities/updateRequests";
+import { updatePostRequest } from "../../../apiRequests/updateRequests";
 import toast from "react-hot-toast";
 import edit from "../../../assets/edit.png";
 import deleteIcon from "../../../assets/delete.png";
@@ -13,7 +13,7 @@ import tik from "../../../assets/tik.png";
 import cross from "../../../assets/cross.png";
 import IndentifyingTextOnHover from "../../../utilities/IndentifyingTextOnHover";
 import save from "../../../assets/save.png";
-import deletePostRequest from "../../../utilities/deleteRequests";
+import deletePostRequest from "../../../apiRequests/deleteRequests";
 interface Props {
     post: Post;
 }
@@ -25,6 +25,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
     // const dispatch = useDispatch();
     const [inEditMode, setInEditMode] = useState(false);
     const [postData, setPostData] = useState(post);
+    const [isDelete, setIsDelete] = useState(false); // for delete popup
     const [image, setImage] = useState<File>();
     const dispatch = useDispatch();
     let formData = new FormData();
@@ -76,7 +77,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                 return response.json();
             })
             .then((data) => {
-               // console.log(data);
+                // console.log(data);
                 dispatch(updatePostReducer(data));
                 toast.success("Post Updated");
                 setInEditMode(false);
@@ -125,20 +126,22 @@ const PostCard: React.FC<Props> = ({ post }) => {
 
     // handling the close event of edit mode
 
-// handling Delete event
-    const handleDeleteEvent = (id:string) => {
-   //console.log(id)
-    deletePostRequest(id)
-    .then(res => {
-        //console.log(res)
-        if(!res.ok ){
-            throw new Error(res.statusText)
-        }
-    })
-    .catch(err => {
-        toast.error(err.toString())
-    })
-   dispatch(deletePostReducer(id))
+    // handling Delete event
+    const handleDeleteEvent = (id: string) => {
+        //console.log(id)
+        deletePostRequest(id)
+            .then(async res => {
+                //console.log(res)
+                if (!res.ok) {
+                    throw new Error(res.statusText)
+                }
+                let a = await res.json();
+                toast.success(a.message);
+                dispatch(deletePostReducer(id))
+            })
+            .catch(err => {
+                toast.error(err.toString())
+            })
     }
     useEffect(() => {
         setIsVisible(true);
@@ -148,8 +151,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
         <>
             {/* Card */}
             <div
-                className={` border   transition-[height,transform]  duration-1000 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"
-                    }  bg-[#f7fcff]  rounded-lg p-4 shadow-sm shadow-[#b0d8f5] hover:translate-y-[-1rem] hover:shadow-lg hover:shadow-[#3fd4f2]  relative dark:bg-opacity-10 block  h-[20rem] ${inEditMode && 'h-full overflow-hidden'} }`}
+                className={` border   transition-[height,transform]  duration-1000 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}  bg-[#f7fcff]  rounded-lg p-4 shadow-sm shadow-[#b0d8f5] hover:translate-y-[-1rem] hover:shadow-lg hover:shadow-[#3fd4f2]  relative dark:bg-opacity-10 block  h-[20rem] ${inEditMode && 'h-full overflow-hidden'} }`}
             >
                 <div className="">
                     <img
@@ -211,7 +213,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                     </span>
                     <pre className=" t"></pre>
                     <div className="mt-4  flex items-center gap-8 text-xs ">
-                        <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                        <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2 ">
                             {/* Edit  button */}
                             <IndentifyingTextOnHover text="Edit">
                                 <div
@@ -226,13 +228,15 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                 </div>
                             </IndentifyingTextOnHover>
                             <IndentifyingTextOnHover text="Delete">
-                                <button 
-                                className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
-                                onClick={()=>(handleDeleteEvent(post._id))}
+                                <button
+                                    className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
+                                    onClick={() => setIsDelete(true)}
                                 >
                                     <img src={deleteIcon} className="h-[2rem]" alt="delete.png" />
                                 </button>
                             </IndentifyingTextOnHover>
+
+
 
 
 
@@ -280,6 +284,38 @@ const PostCard: React.FC<Props> = ({ post }) => {
                     </div>
                 </div>
             </div>
+            {/*----popup model for sureing the delete operation--- */}
+            {isDelete
+                && <div className={`dark:bg-neutral-300 rounded-lg bg-white p-8 transition-opacity	${isDelete ? "opacity-100" : "opacity-0"} duration-700
+                 fixed z-10 top-[50%] left-[50%] translate-x-[-50%]	translate-y-[-50%]	shadow-2xl`}>
+                    <h2 className="text-lg font-bold">Are you sure you want to do that?</h2>
+
+                    <p className="mt-2 text-sm text-gray-500 ">
+                        Deleting 
+                        <span
+                            className="rounded mx-2 bg-red-50 px-4 py-2 text-sm font-medium text-red-600"
+                            >
+                            {post.title}
+                        </span>
+ post will delete it permanently from database are you sure to delete it?
+                    </p>
+
+                    <div className="mt-4 flex gap-2">
+                        <button
+                            type="button"
+                            className="rounded bg-green-50 px-4 py-2 text-sm font-medium text-green-600"
+                            onClick={() => (handleDeleteEvent(post._id))}>
+                            Yes, I'm sure
+                        </button>
+
+                        <button
+                            type="button"
+                            className="rounded bg-gray-50 px-4 py-2 text-sm font-medium text-gray-600"
+                            onClick={() => setIsDelete(false)}>
+                            No, go back
+                        </button>
+                    </div>
+                </div>}
         </>
     );
 };

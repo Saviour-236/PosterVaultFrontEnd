@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../Statemanagement/store";
 import PostCard from "../reusableComponents/postCard";
 import { useEffect, } from "react";
-import { fetchPosts } from "../utilities/fetchingRequest"
+import { fetchPosts } from "../apiRequests/fetchingRequest"
 import { initializePostsReducer } from "../Statemanagement/Slices/postSlice"
 
 
@@ -64,7 +64,9 @@ function posts() {
     return (
         <>
 
-            <div className="space-between justify-center flex flex-wrap p-[1rem] grid-cols-4 max-md:grid-cols-1 ">
+            <div className="space-between justify-center flex flex-wrap grid-cols-4 
+            
+            max-md:grid-cols-1 ">
                 {posts.map((post) => (
                     <li key={post._id} className=" w-fit list-none rounded-lg m-[1rem] dark:border-none hover:z-10"
                     >

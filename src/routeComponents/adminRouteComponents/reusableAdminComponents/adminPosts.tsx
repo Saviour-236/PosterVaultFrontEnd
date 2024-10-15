@@ -4,7 +4,7 @@ import AdminPostCard from './adminPostCard'
 import { useSelector } from 'react-redux';
 import { Post } from '../../../Statemanagement/Slices/postSlice';
 import { useEffect, useState } from 'react';
-import { fetchPosts } from '../../../utilities/fetchingRequest';
+import { fetchPosts } from '../../../apiRequests/fetchingRequest';
 import { useDispatch } from 'react-redux';
 import { initializePostsReducer } from '../../../Statemanagement/Slices/postSlice';
 
