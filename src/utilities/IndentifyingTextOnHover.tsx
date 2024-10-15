@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react"
 
 function IndentifyingTextOnHover({ children, text }: { children: ReactNode, text: string }) {
   const [show, setShow] = useState(false);
-  let timeOutId: number = 0;
+  let timeOutId: NodeJS.Timeout;
   const eventHandler = (e: React.MouseEvent) => {
     const mouseEnterHandler = () => {
       timeOutId = setTimeout(() => setShow(true), 1000);

@@ -6,7 +6,8 @@ const viewImageSlice = createSlice({
     initialState:  null || {} as Post,
     reducers: {
         initializeViewImage:(state, action) => {
-            return   state = action.payload;
+              state = action.payload;
+              return state
            },
     }
 });
