@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import {
     deletePostReducer,
     updatePostReducer
-} from "../../../Statemanagement/Slices/postSlice";
-import { Post } from "../../../Statemanagement/interfaces";
+} from "../../Statemanagement/Slices/postSlice";
+import { Post } from "../../Statemanagement/interfaces";
 import { useDispatch } from "react-redux";
-import { updatePostRequest } from "../../../apiRequests/updateRequests";
+import { updatePostRequest } from "../../apiRequests/updateRequests";
 import toast from "react-hot-toast";
-import edit from "../../../assets/edit.png";
-import deleteIcon from "../../../assets/delete.png";
-import tik from "../../../assets/tik.png";
-import cross from "../../../assets/cross.png";
-import IndentifyingTextOnHover from "../../../utilities/IndentifyingTextOnHover";
-import save from "../../../assets/save.png";
-import deletePostRequest from "../../../apiRequests/deleteRequests";
+import edit from "../../assets/edit.png";
+import deleteIcon from "../../assets/delete.png";
+import tik from "../../assets/tik.png";
+import cross from "../../assets/cross.png";
+import IdentifyingTextOnHover from "../../utilities/IdentifyingTextOnHover";
+import save from "../../assets/save.png";
+import deletePostRequest from "../../apiRequests/deleteRequests";
 interface Props {
     post: Post;
 }
@@ -215,7 +215,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                     <div className="mt-4  flex items-center gap-8 text-xs ">
                         <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2 ">
                             {/* Edit  button */}
-                            <IndentifyingTextOnHover text="Edit">
+                            <IdentifyingTextOnHover text="Edit">
                                 <div
                                     className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center cursor-pointer text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
 
@@ -226,15 +226,15 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                         <img id="edit" onClick={handleEditClick} src={edit} alt="" className="h-[2rem] " />
                                     )}
                                 </div>
-                            </IndentifyingTextOnHover>
-                            <IndentifyingTextOnHover text="Delete">
+                            </IdentifyingTextOnHover>
+                            <IdentifyingTextOnHover text="Delete">
                                 <button
                                     className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
                                     onClick={() => setIsDelete(true)}
                                 >
                                     <img src={deleteIcon} className="h-[2rem]" alt="delete.png" />
                                 </button>
-                            </IndentifyingTextOnHover>
+                            </IdentifyingTextOnHover>
 
 
 
@@ -242,7 +242,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
 
                             {/*  save button*/}
                             {inEditMode &&
-                                <IndentifyingTextOnHover text="Save">
+                                <IdentifyingTextOnHover text="Save">
                                     <button
                                         onClick={handleSaveEvent}
                                         className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3">
@@ -251,11 +251,11 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                             className="h-[2rem]"
                                             alt="save" />
                                     </button>
-                                </IndentifyingTextOnHover>}
+                                </IdentifyingTextOnHover>}
 
 
                             {/*  for enable or disable*/}
-                            <IndentifyingTextOnHover text="Enable">
+                            <IdentifyingTextOnHover text="Enable">
                                 <div
                                     // onClick={handleEnableClick}
                                     className=" top-[0.5rem] border border-[#09a5e3] bg-white rounded-full right-[0.5rem] "
@@ -266,7 +266,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                         <div className="   rounded-full h-[1.5rem] w-[1.5rem] "></div>
                                     )}
                                 </div>
-                            </IndentifyingTextOnHover>
+                            </IdentifyingTextOnHover>
                             <div className={`w-fit transition-bg duration-500 ease-in flex border font-bold m-3 text-[0.9rem] p-[0.5rem] rounded-md bottom-0 right-0 hover:bg-[#5fe4e4] bg-[#b6ecec] bg-opacity-90  ${inEditMode && "border border-black "
                                 }`}>
                                 ₹

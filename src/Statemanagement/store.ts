@@ -4,12 +4,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import PostSliceReducer from "./Slices/postSlice";
 import UserSliceReducer  from "./Slices/userSlice";
 import ViewImageReducer from "../Statemanagement/Slices/viewImageSlice";
+import cartSliceReducer from "./Slices/cartSlice";
 // Configure the store
 const store = configureStore({
     reducer: {
         postSliceState: PostSliceReducer,
         userSliceState: UserSliceReducer,
         viewImageSliceState: ViewImageReducer,
+        cartSliceState: cartSliceReducer,
     },
 });
 

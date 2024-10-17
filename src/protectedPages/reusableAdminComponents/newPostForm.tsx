@@ -1,9 +1,9 @@
 // a form which have text area for discription, input field for title , image box for img and input field for price
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import toast, {Toaster} from 'react-hot-toast'
-import { AppDispatch } from '../../../Statemanagement/store';
+import { AppDispatch } from '../../Statemanagement/store';
 import { useDispatch } from 'react-redux';
-import { addPostReducer } from '../../../Statemanagement/Slices/postSlice';
+import { addPostReducer } from '../../Statemanagement/Slices/postSlice';
 interface FormValues {
   title: string;
   description: string;

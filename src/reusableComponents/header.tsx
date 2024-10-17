@@ -5,12 +5,13 @@ import logo from '../assets/profilePic.png';
 import lightIcon from '../assets/lightThemeIcon.png';
 import darktIcon from '../assets/darkThemeIcon.png';
 import { initializeUser } from '../Statemanagement/Slices/userSlice';
+import Cart from './Buttons/cartButton';
 const Header: React.FC = () => {
     const [darkMode, setDarkMode] = useState(false);// dark mode state
     const [searchValue, setSearchValue] = useState('');// search value state
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: RootState) => state.userSliceState);
-   
+
     //handling search event 
     const handleSearchEvent = () => {
         console.log(searchValue);
@@ -32,15 +33,24 @@ const Header: React.FC = () => {
         if (user) dispatch(initializeUser(JSON.parse(user)));
     }
     return (
-        <header className="flex items-center justify-between p-4  shadow-md rounded-b-[1rem] 
-        max-sm:p-1">
+        <header className="flex items-center bg-[#f0f5f7] justify-between p-4  shadow-md rounded-b-[1rem] 
+        max-sm:p-1
+        dark:bg-[#112031]
+        ">
 
             {/* Logo */}
             <div className="flex items-center">
+                <button className=' ml-4'>
+                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+                    </svg>
+                </button>
                 <span className="ml-2 text-xl font-bold dark:text-white
                 
-                max-sm:text-[1rem]
-                ">my Collections</span>
+                max-sm:text-[0.7rem] max-sm:hidden
+                ">
+                    my Collections
+                </span>
             </div>
             <div className=' flex gap-3  '>
 
@@ -50,14 +60,18 @@ const Header: React.FC = () => {
                 hover:border-[#c1c4c5]
                 
                 dark:bg-transparent dark:text-white dark:border-[#254f7a] dark:hover:border-[#326b91] '>
-                    <input type="text" id='searchBox' onChange={(e)=>{
+
+                    {/* input field */}
+                    <input type="text" id='searchBox' onChange={(e) => {
                         setSearchValue(e.target.value);
-                    }} placeholder="search......" className='bg-transparent w-[9rem]  min-w-[1rem] outline-none text-[#616769]
+                    }}
+                        placeholder="search......"
+                        className='bg-transparent w-[9rem]  min-w-[1rem] outline-none text-[#616769]
                     
-                    max-sm:w-[5rem] max-sm:h-[1rem]
+                    max-sm:w-[5rem] max-sm:h-[1rem] max-sm:text-[0.7rem]
                     
                     dark:text-[rgb(173,180,182)]' />
-                    <label htmlFor="searchBox" onClick={()=>handleSearchEvent()} className=''>
+                    <label htmlFor="searchBox" onClick={() => handleSearchEvent()} className=''>
                         <svg className="w-4 h-4 me-2 text-[#888f92]
                        
                         hover:cursor-pointer hover:text-[#2091ce]
@@ -65,9 +79,9 @@ const Header: React.FC = () => {
                         max-sm:w-3 max-sm:h-3 
                        
                         dark:text-[#30679e]  
-                        dark:hover:text-[#328de7] " 
-                        aria-hidden="true" 
-                        xmlns="http://www.w3.org/2000/svg"
+                        dark:hover:text-[#328de7] "
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
 
                             fill="none"
                             viewBox="0 0 20 20">
@@ -76,6 +90,8 @@ const Header: React.FC = () => {
                     </label>
                 </span>
 
+                {/* cart Icon */}
+                <Cart />
 
                 {/* theme Icon */}
                 <div className="flex items-center  min-w-fit">

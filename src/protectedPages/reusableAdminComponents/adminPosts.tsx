@@ -1,12 +1,12 @@
 
-import { RootState } from '../../../Statemanagement/store';
+import { RootState } from '../../Statemanagement/store';
 import AdminPostCard from './adminPostCard'
 import { useSelector } from 'react-redux';
-import { Post } from '../../../Statemanagement/interfaces';
+import { Post } from '../../Statemanagement/interfaces';
 import { useEffect, useState } from 'react';
-import { fetchPosts } from '../../../apiRequests/fetchingRequest';
+import { fetchPosts } from '../../apiRequests/fetchingRequest';
 import { useDispatch } from 'react-redux';
-import { initializePostsReducer } from '../../../Statemanagement/Slices/postSlice';
+import { initializePostsReducer } from '../../Statemanagement/Slices/postSlice';
 
 function Adminposts() {
     const posts = useSelector((state: RootState) => state.postSliceState);

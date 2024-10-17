@@ -15,14 +15,16 @@ import { Provider } from 'react-redux'
 import store from './Statemanagement/store'
 
 //page components 
-import HomePage from './routeComponents/home'
-import SignInPage from './routeComponents/signIn'
-import AdminPage from './routeComponents/admin'
+import HomePage from './publicPages/home'
+import SignInPage from './publicPages/signIn'
+import AdminPage from './protectedPages/adminPage'
+import CartPage from './publicPages/cartPage'
+
 
 
 //layout components
-import Layout from './routeComponents/layout'
-import AdminLayout from './routeComponents/adminRouteComponents/adminLayout'
+import Layout from './publicPages/layout'
+import AdminLayout from './protectedPages/adminLayout'
 
 //routs 
 const Router = createBrowserRouter([
@@ -35,9 +37,15 @@ const Router = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path:"/cart",
+        element:<CartPage />
+      },
+
+      {
         path: '/signIn',
         element: <SignInPage />,
       },
+      
    {
         path: '/admin',
         element: <AdminLayout />,

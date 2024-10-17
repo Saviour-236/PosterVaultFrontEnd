@@ -1,5 +1,5 @@
-import AdminPosts from "./adminRouteComponents/reusableAdminComponents/adminPosts";
-import AddPost from "./adminRouteComponents/reusableAdminComponents/addNewPostButton";
+import AdminPosts from "./reusableAdminComponents/adminPosts";
+import AddPost from "./reusableAdminComponents/addNewPostButton";
 import { Toaster } from "react-hot-toast";
 
 function admin() {

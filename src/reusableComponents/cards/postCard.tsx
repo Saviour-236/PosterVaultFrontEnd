@@ -1,8 +1,10 @@
 // a react component that displays a  post card which have a img title and discrition 
 import { useEffect, useState } from "react";
-import { Post } from "../Statemanagement/interfaces";
+import { Post } from "../../Statemanagement/interfaces";
 import { useDispatch } from "react-redux";
-import { initializeViewImage } from "../Statemanagement/Slices/viewImageSlice";
+import { initializeViewImage } from "../../Statemanagement/Slices/viewImageSlice";
+import AddToCart from "../Buttons/addToCart";
+import BuyButton from "../Buttons/buy";
 interface Props {
     post: Post
 }
@@ -26,33 +28,42 @@ const PostCards: React.FC<Props> = ({ post }) => {
                 <div className="justify-center  flex  ">
                     <img
                         src={post.imageUrl} alt={post.alt}
-                        className={` h-[6rem]  rounded-md object-cover hover:cursor-pointer group-hover:scale-30  `}
+                        className={` h-[6rem]  rounded-md object-cover hover:cursor-pointer  `}
                         onClick={() => handleImageClick()}
                     />
                 </div>
                 <div className="mt-1 w-full  ">
-                   <p className="text-right  text-[1rem] ">
-                    &#8377; {post.price}</p> 
-                    <p className=" text-[1.5rem] w-full inline-block"> {post.title}</p>
+
+                    {/* Price */}
+                    <div className="flex justify-between">
+                        <span className="
+                        text-[0.9rem]
+                        max-sm:text-[0.8rem]">
+                            Price
+                        </span>
+                        <p className="text-right text-[#9ca0a0] text-[0.8rem] ">
+                            &#8377; {post.price}
+                        </p>
+                    </div>
+
+                    {/* title */}
+                    <p className=" text-[1.3rem]  text-[#505152] w-full inline-block 
+
+                    dark:text-[#b2c0c9]
+                    max-sm:text-[1rem]
+                    ">
+                        {post.title}
+                    </p>
                     <div className="flex gap-x-2">
-                        <button
-                            type="button"
-                            className="rounded-lg border  bg-gray-50 px-4 py-1 text-sm font-medium text-gray-600 
-                            dark:bg-[#526283] dark:border-[#526283] dark:text-[#f7fcff]"
-                        >
-                            Add to cart
-                        </button>
-                        <button
-                            type="button"
-                            className="rounded-lg border bg-green-50 px-4 py-1 text-sm font-medium text-green-600 
-                            dark:bg-[#58926d] dark:border-[#526283] dark:bg-opacity-50  dark:text-[#9ef1a2]"
-                        >
-                            buy
-                        </button>
+
+                        {/* Add to cart button  */}
+                        <AddToCart post={post} />
+
+                        {/* Buy button */}
+                        <BuyButton />
                     </div>
                 </div>
             </div>
-            {/* view image box  */}
         </>
     );
 };

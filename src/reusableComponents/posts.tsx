@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../Statemanagement/store";
-import PostCard from "../reusableComponents/postCard";
+import PostCard from "./cards/postCard";
 import { useEffect, } from "react";
 import { fetchPosts } from "../apiRequests/fetchingRequest"
 import { initializePostsReducer } from "../Statemanagement/Slices/postSlice"

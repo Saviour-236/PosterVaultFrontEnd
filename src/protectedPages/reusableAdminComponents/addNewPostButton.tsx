@@ -1,8 +1,8 @@
 // this is a button which will be used to add a new post
 import { useState } from "react"
 import NewPostForm from './newPostForm'
-import add from '../../../assets/add.png'
-import cross from '../../../assets/cross.png'
+import add from '../../assets/add.png'
+import cross from '../../assets/cross.png'
 function addNewPost() {
   const [showFrom, setShowForm] = useState<boolean>(false)
   const handleAddButton = () => {

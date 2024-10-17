@@ -1,8 +1,8 @@
-import { RootState } from "../../Statemanagement/store";
+import { RootState } from "../Statemanagement/store";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
-import { initializeUser } from "../../Statemanagement/Slices/userSlice";
+import { initializeUser } from "../Statemanagement/Slices/userSlice";
 import { useDispatch } from "react-redux";
 function adminLayout() {
   const [authTextController, setAuthTextController] = useState(false);
