@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { initializeUser } from "../Statemanagement/Slices/userSlice";
 import { useDispatch } from "react-redux";
+import { baseAddress } from "../baseAddress";
 function adminLayout() {
   const [authTextController, setAuthTextController] = useState(false);
   const [authText, setAuthtext] = useState("");
@@ -12,34 +13,12 @@ function adminLayout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   //actual fetch request for checking user is authorized or not
-  // const checkAuth = async () => {
-  //   setAuthTextController(true);
-  //   try {
-  //     setAuthtext("Authorizing");
-  //     const response = await fetch("https://tile-back-end.onrender.com/admin/checkAuth", {
-  //       method: "GET",
-  //       credentials: "include"
-  //     });
-  //     if (response.status !== 200) {
-  //       const data = await response.json();
-  //       throw new Error(data.message);
-  //     }
-  //     setAuthtext("Authorized");
-  //     setAuthTextController(false);
-  //     setAuthorized(true);
-  //     return;
-  //   } catch (error:any) {
-  //     const err = error.message;
-  //     setAuthtext(err);
-  //     navigate("/signIn");
-  //   }
-  // };
-  // for local host testing
+
   const checkAuth = async () => {
     setAuthTextController(true);
     try {
       setAuthtext("Authorizing");
-      const response = await fetch("http://localhost:3000/admin/checkAuth", {
+      const response = await fetch(`${baseAddress}/admin/checkAuth`, {
         method: "GET",
         credentials: "include"
       });
