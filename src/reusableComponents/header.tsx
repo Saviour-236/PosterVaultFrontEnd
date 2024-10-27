@@ -6,12 +6,13 @@ import lightIcon from '../assets/lightThemeIcon.png';
 import darktIcon from '../assets/darkThemeIcon.png';
 import { initializeUser } from '../Statemanagement/Slices/userSlice';
 import Cart from './Buttons/cartButton';
+import { Link, useNavigate } from 'react-router-dom';
 const Header: React.FC = () => {
     const [darkMode, setDarkMode] = useState(false);// dark mode state
     const [searchValue, setSearchValue] = useState('');// search value state
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: RootState) => state.userSliceState);
-
+    const Navigate = useNavigate();
     //handling search event 
     const handleSearchEvent = () => {
         console.log(searchValue);
@@ -32,24 +33,33 @@ const Header: React.FC = () => {
         const user = localStorage.getItem('user');
         if (user) dispatch(initializeUser(JSON.parse(user)));
     }
+
+    //handling logo click
+    const logoClickhandler = () => {
+        if (window.location.href = '/') {
+            return;
+        }
+        else {
+            Navigate('/', { replace: false });
+        }
+    };
     return (
-        <header className="flex items-center bg-[#f0f5f7] justify-between p-4  shadow-md rounded-b-[1rem] 
+        <header className="flex items-center bg-[#f0f5f7] justify-between p-2  shadow-md rounded-b-[1rem] 
         max-sm:p-1
         dark:bg-[#112031]
         ">
 
             {/* Logo */}
             <div className="flex items-center">
-                <button className=' ml-4'>
-                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
-                    </svg>
-                </button>
-                <span className="ml-2 text-xl font-bold dark:text-white
+
+                <span className="ml-2 flex space-x-1 text-xl font-bold dark:text-white
                 
                 max-sm:text-[0.7rem] max-sm:hidden
                 ">
-                    my Collections
+                    <Link to={'/'}>
+                        <img src="/fav.png" alt=" Site Logo  " className='h-[1.8rem] ' />
+                    </Link>
+                    <p>Poster vault</p>
                 </span>
             </div>
             <div className=' flex gap-3  '>
