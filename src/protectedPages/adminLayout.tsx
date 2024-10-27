@@ -30,7 +30,7 @@ function adminLayout() {
       setAuthTextController(false);
       setAuthorized(true);
       return;
-    } catch (error:any) {
+    } catch (error: any) {
       const err = error.message;
       setAuthtext(err);
       navigate("/signIn");
@@ -43,13 +43,26 @@ function adminLayout() {
       dispatch(initializeUser(JSON.parse(user)));
     }
   }
+
+const hidingForMobile=()=>{
+  if(window.innerWidth<640){
+    return true
+  }
+  return false
+}
   return (
     <>
       {/* just loading purpose and cheking user is it autrized or not */}
 
       <div> {authTextController && authText}</div>
 
-      {authorized && <div>admin page layout </div>  && <Outlet />}
+      {authorized
+        && <>
+          <div className="border ">admin page layout </div>
+          <div className="max-sm:hidden"><Outlet /></div>
+          {hidingForMobile() && <div className="border">mobile view : please open in pc </div>}
+        </>
+        }
     </>
   )
 }
