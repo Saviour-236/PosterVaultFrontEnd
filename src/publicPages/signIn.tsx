@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { initializeUser } from '../Statemanagement/Slices/userSlice'
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import { baseAddress } from '../baseAddress';
 const SignInForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -14,40 +15,7 @@ const SignInForm = () => {
     if (validateForm()) {
       const lodingToast = toast.loading('signing in...');
       // Perform your sign-in logic here (e.g., API call)  
-      // await fetch('https://tile-back-end.onrender.com/auth/signIn', {
-      //   method: 'POST',
-      //   credentials: 'include',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     email: email,
-      //     password: password,
-      //   }),
-      // })
-      //   .then(async response => {
-      //     if (!response.ok) {
-      //       const error = await response.json();
-      //       throw new Error(error.message);
-      //     }
-      //     return response.json(); // Assuming server returns JSON response
-      //   })
-      //   .then(data => {
-      //     toast.dismiss(lodingToast)
-      //     dispatch(initializeUser(data))
-      //     toast.success('Signed in successfully');
-      //     localStorage.setItem('user', JSON.stringify(data));
-      //     if (data.admin) {
-      //       navigate('/admin')
-      //     }
-      //     else { navigate('/'); }
-      //   })
-      //   .catch(error => {
-      //     toast.dismiss(lodingToast)
-      //     toast.error(error.message)
-      //   });
-      //for local host testing 
-      await fetch('http://localhost:3000/auth/signIn', {
+      await fetch(`${baseAddress}/auth/signIn`, {
         method: 'POST',
         credentials: 'include',
         headers: {
