@@ -6,13 +6,12 @@ import lightIcon from '../assets/lightThemeIcon.png';
 import darktIcon from '../assets/darkThemeIcon.png';
 import { initializeUser } from '../Statemanagement/Slices/userSlice';
 import Cart from './Buttons/cartButton';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
     const [darkMode, setDarkMode] = useState(false);// dark mode state
     const [searchValue, setSearchValue] = useState('');// search value state
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: RootState) => state.userSliceState);
-    const Navigate = useNavigate();
     //handling search event 
     const handleSearchEvent = () => {
         console.log(searchValue);
@@ -34,15 +33,8 @@ const Header: React.FC = () => {
         if (user) dispatch(initializeUser(JSON.parse(user)));
     }
 
-    //handling logo click
-    const logoClickhandler = () => {
-        if (window.location.href = '/') {
-            return;
-        }
-        else {
-            Navigate('/', { replace: false });
-        }
-    };
+   
+ 
     return (
         <header className="flex items-center bg-[#f0f5f7] justify-between p-2  shadow-md rounded-b-[1rem] 
         max-sm:p-1
