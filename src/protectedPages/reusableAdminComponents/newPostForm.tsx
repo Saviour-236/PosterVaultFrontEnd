@@ -4,6 +4,7 @@ import toast, {Toaster} from 'react-hot-toast'
 import { AppDispatch } from '../../Statemanagement/store';
 import { useDispatch } from 'react-redux';
 import { addPostReducer } from '../../Statemanagement/Slices/postSlice';
+import { baseAddress } from '../../baseAddress';
 interface FormValues {
   title: string;
   description: string;
@@ -50,33 +51,8 @@ const FormExample: React.FC = () => {
     formData.append('image', values.image || '');
 
 //     //   Handle form submission logic here, e.g., send data to server or update state
-//     await fetch('https://tile-back-end.onrender.com/post/addNewPost',
-//       {
-//         method: 'POST',
-//         body: formData,
-//         credentials: 'include',
-//         mode: 'cors'
-//       })
-//       .then(response => {
-//         //console.log("this is response",response)
-//         return response.json()})
-//       .then(data => 
-//        {
-//       //  console.log("this is data",data)
-//          dispatch(addPostReducer(data.user))
-//         toast.success('Post added successfully')
-//        // console.log('Post added successfully')
-//        }
-//     )
-//       .catch( err => {
-//        // console.log("thid is error",err)
-//         toast.error(err.message)
-//       })
 
-
-
-// ---------------------------------------for local host testing
-await fetch('http://localhost:3000/post/addNewPost',
+await fetch(`${baseAddress}/post/addNewPost`,
   {
     method: 'POST',
     body: formData,
