@@ -54,12 +54,12 @@ const Header: React.FC = () => {
 
                 <span className="ml-2 flex space-x-1 text-xl font-bold dark:text-white
                 
-                max-sm:text-[0.7rem] max-sm:hidden
+                max-sm:text-[0.7rem]
                 ">
                     <Link to={'/'}>
-                        <img src="/fav.png" alt=" Site Logo  " className='h-[1.8rem] ' />
+                        <img src="/fav.png" alt=" Site Logo  " className='h-[1.8rem] max-sm:h-[1.2rem]' />
                     </Link>
-                    <p>Poster vault</p>
+                    <p className='max-sm:hidden'>Poster vault</p>
                 </span>
             </div>
             <div className=' flex gap-3  '>
