@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../Statemanagement/store";
 import PostCard from "./cards/postCard";
-import { useEffect, } from "react";
+import { useEffect,  } from "react";
 import { fetchPosts } from "../apiRequests/fetchingRequest"
 import { clearPostReducer, initializePostsReducer } from "../Statemanagement/Slices/postSlice"
 import Masonry from "react-masonry-css";
@@ -10,12 +10,12 @@ import Masonry from "react-masonry-css";
 
 function posts() {
     const state = useSelector((state: RootState) => state.postSliceState.allPosts);
-   
     const breakpointColumns = {
         default: 4,
         1100: 3,
         700: 2,
     };
+  
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
 
@@ -28,14 +28,14 @@ function posts() {
             .catch((err) => {
                 console.log(err)
             })
-
+        // console.log("posts are loaded")
         return (() => {
             dispatch(clearPostReducer())
         })
 
     }, [])
     if (state && Object.keys(state).length == 0) {
-        return <div className="h-[87vh] w-[100vw] border flex justify-center items-center"><div>Loading</div></div>;
+        return <div className="h-[87vh] w-[100vw] border flex justify-center items-center "><div>Loading</div></div>;
     }
     return (
         <>
@@ -46,10 +46,11 @@ function posts() {
                     breakpointCols={breakpointColumns}
                     className="flex  "
                     columnClassName="min-w-fit  ">
-                    {state && state.map((post) => (
-                        <PostCard  post={post}  key={post._id}  />
-
-                    ))}
+                    {state &&
+                        state.map((post, index) => (
+                             <PostCard post={post}  key={index} />
+                        ))
+                    }
                 </Masonry>
             </div>
         </>

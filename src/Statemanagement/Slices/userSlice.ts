@@ -11,9 +11,13 @@ const userSlice = createSlice({
         initializeUser: (_state ,action: PayloadAction<UserState>) => {
             return action.payload;
         },
+        clearUserReducer: () => {
+            return {} as UserState;
+        }
+        ,
     },
 });
 
-export const { initializeUser } = userSlice.actions;
+export const { initializeUser , clearUserReducer } = userSlice.actions;
 
 export default userSlice.reducer;

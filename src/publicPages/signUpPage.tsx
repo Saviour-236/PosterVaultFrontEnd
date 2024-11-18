@@ -109,9 +109,11 @@ function signUpPage() {
                     <h4 className="sm:text-3xl text-2xl font-bold text-white">Create your free account</h4>
                 </div>
 
-                <div className="mx-4 mb-4 -mt-16">
+                <div className="mx-4 mb-4 -mt-16 ">
                     {/* Form  */}
-                    <form className="max-w-4xl mx-auto bg-white shadow-[0_2px_13px_-6px_rgba(0,0,0,0.4)] sm:p-8 p-4 rounded-md">
+                    <form className="max-w-4xl bg-white mx-auto  shadow-[0_2px_13px_-6px_rgba(0,0,0,0.4)] sm:p-8 p-4 rounded-md
+                    dark:bg-[#12113357] dark:text-white
+                    ">
                         <div className="grid md:grid-cols-2 gap-8">
                             {/* sign Up with google buttton */}
                             <button type="button"
@@ -162,40 +164,40 @@ function signUpPage() {
                         <div className="grid md:grid-cols-2 gap-8">
                             {/* First Name Input field */}
                             <div>
-                                <label className="text-gray-800 text-sm mb-2 block">First Name</label>
+                                <label className="text-gray-800 text-sm mb-2 block dark:text-[#edecfa93]">First Name</label>
                                 <input name="firstName" type="text" className="bg-gray-100 focus:bg-transparent w-full text-sm text-gray-800 px-4 py-3 rounded-md outline-blue-500 transition-all" placeholder="Enter name"
                                     onChange={handleOnChange} />
                             </div>
                             {/* Last Name Input field */}
                             <div>
-                                <label className="text-gray-800 text-sm mb-2 block">Last Name</label>
+                                <label className="text-gray-800  text-sm mb-2 block dark:text-[#edecfa93]">Last Name</label>
                                 <input name="lastName" type="text" className="bg-gray-100 focus:bg-transparent w-full text-sm text-gray-800 px-4 py-3 rounded-md outline-blue-500 transition-all" placeholder="Enter last name"
                                     onChange={handleOnChange} />
                             </div>
                             {/* Email Input field */}
                             <div>
-                                <label className="text-gray-800 text-sm mb-2 block">Email Id</label>
+                                <label className="text-gray-800 text-sm mb-2 block dark:text-[#edecfa93]">Email Id</label>
                                 <input name="email" type="text" className="bg-gray-100 focus:bg-transparent w-full text-sm text-gray-800 px-4 py-3 rounded-md outline-blue-500 transition-all" placeholder="Enter email"
                                     onChange={handleOnChange} />
                             </div>
 
                             {/* Phone number input field */}
                             <div>
-                                <label className="text-gray-800 text-sm mb-2 block">Mobile No.</label>
+                                <label className="text-gray-800 text-sm mb-2 block dark:text-[#edecfa93]">Mobile No.</label>
                                 <input name="phone" type="number" className="bg-gray-100 focus:bg-transparent w-full text-sm text-gray-800 px-4 py-3 rounded-md outline-blue-500 transition-all" placeholder="Enter mobile number"
                                     onChange={handleOnChange} />
                             </div>
 
                             {/* Password Input field */}
                             <div>
-                                <label className="text-gray-800 text-sm mb-2 block">Password</label>
+                                <label className="text-gray-800 text-sm mb-2 block dark:text-[#edecfa93]">Password</label>
                                 <input name="password" type="password" className="bg-gray-100 focus:bg-transparent w-full text-sm text-gray-800 px-4 py-3 rounded-md outline-blue-500 transition-all" placeholder="Enter password"
                                     onChange={handleOnChange} />
                             </div>
 
                             {/* Confirm Password Input field */}
                             <div>
-                                <label className="text-gray-800 text-sm mb-2 block">Confirm Password</label>
+                                <label className="text-gray-800 text-sm mb-2 block dark:text-[#edecfa93]">Confirm Password</label>
                                 <input name="cPassword" type="password" className="bg-gray-100 focus:bg-transparent w-full text-sm text-gray-800 px-4 py-3 rounded-md outline-blue-500 transition-all" placeholder="Enter confirm password"
                                     onChange={handleOnChange} />
                             </div>

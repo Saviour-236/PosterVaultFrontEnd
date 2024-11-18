@@ -30,7 +30,7 @@ const Header: React.FC = () => {
         if (localStorageUser) {
             const parsedUser = JSON.parse(localStorageUser);
             const decodedToken = jwtDecode(parsedUser.accessToken) ;
-            console.log("decodedToken", decodedToken);
+            // console.log("decodedToken", decodedToken);
             const { userInfo } = decodedToken as any;
             // saving user in redux store 
             if (JSON.stringify(userState.userInfo) !== JSON.stringify(userInfo)) {

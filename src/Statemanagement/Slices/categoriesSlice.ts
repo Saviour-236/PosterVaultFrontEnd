@@ -10,7 +10,7 @@ const categoriesSlice = createSlice({
     reducers:{
         toggleDisplayBitReducer: (state) =>{
             state.display = !state.display;
-            console.log("state ",state.display)
+            // console.log("state ",state.display)
             return state
         }
     }
