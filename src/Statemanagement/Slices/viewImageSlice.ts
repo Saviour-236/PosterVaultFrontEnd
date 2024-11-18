@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Post } from "../interfaces";
+import { Poster } from "../interfaces";
 
 const  object = {};
 const isObjectEmpty  =(object:Object) => {
@@ -7,7 +7,7 @@ const isObjectEmpty  =(object:Object) => {
 }
 const viewImageSlice = createSlice({
     name: 'viewImage',
-    initialState:  isObjectEmpty(object) ? null : {} as Post,
+    initialState:  isObjectEmpty(object) ? null : {} as Poster,
     reducers: {
         initializeViewImage:(state, action) => {
               state = action.payload;

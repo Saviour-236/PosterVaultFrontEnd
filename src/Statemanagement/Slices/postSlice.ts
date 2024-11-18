@@ -1,35 +1,87 @@
-import { createSlice , PayloadAction} from '@reduxjs/toolkit';
-import { Post } from '../interfaces';
+import {  createSlice , PayloadAction} from '@reduxjs/toolkit';
+import { Poster } from '../interfaces';
 
+export interface PosterCategories {
+    allPosts: Poster[];
+    classicArt: Poster[];
+    popCultureIcons: Poster[];
+    motivationalQuotes: Poster[];
+    natureLandscapes: Poster[];
+    abstractModernArt: Poster[];
+    vintageRetro: Poster[];
+    moviesTvShows: Poster[];
+    musicLegends: Poster[];
+    travelDestinations: Poster[];
+    historicalMoments: Poster[];
+    sportsHeroes: Poster[];
+    animeManga: Poster[];
+    gamingUniverse: Poster[];
+    minimalistDesigns: Poster[];
+    streetArtGraffiti: Poster[];
+    fantasySciFi: Poster[];
+    comicBookCharacters: Poster[];
+    typographyCalligraphy: Poster[];
+    spaceAstronomy: Poster[];
+  }
+//   const initialState: PosterCategories = {
+//     classicArt: [],
+//     popCultureIcons: [],
+//     motivationalQuotes: [],
+//     natureLandscapes: [],
+//     abstractModernArt: [],
+//     vintageRetro: [],
+//     moviesTvShows: [],
+//     musicLegends: [],
+//     travelDestinations: [],
+//     historicalMoments: [],
+//     sportsHeroes: [],
+//     animeManga: [],
+//     gamingUniverse: [],
+//     minimalistDesigns: [],
+//     streetArtGraffiti: [],
+//     fantasySciFi: [],
+//     comicBookCharacters: [],
+//     typographyCalligraphy: [],
+//     spaceAstronomy: []
+//   };
+  
 const postSlice = createSlice({
     name: 'Posts',
-    initialState:[] as Post[],
+    initialState: {} as PosterCategories,
     reducers: {
-        initializePostsReducer: (state, action: PayloadAction<Post[]>)=> {
-        const keys = state.map((post)=> post._id);
-        const mergedArray = [...state, ...action.payload.filter((post)=> !keys.includes(post._id))];
-          return mergedArray;
+        initializePostsReducer: (state, action: PayloadAction<Poster[]> )=> {
+            if(state.allPosts == undefined) state.allPosts = [] as Poster[];
+             for( const poster of action.payload ){
+                state.allPosts.push(poster);    
+             }
+            return state;
         },
-        addPostReducer: (state, action: PayloadAction<Post>) => {
-            // Add post to the state array
-            state.unshift(action.payload);
+        clearPostReducer: (state) => {
+            state = {} as PosterCategories; 
+            return state;
         },
-        deletePostReducer: (state, action: PayloadAction<Post["_id"]>) => {
-            // Delete post from the state array
-         return   state.filter((post) => {
-            if(post._id !== action.payload){
-                return post
-            }
-        });
+        addPostReducer: (state, action:PayloadAction<Poster>) => {
+            // if(state[action.payload.category] === undefined){
+            //     state[action.payload.category] = [] as Poster[];
+            // }
+            state.allPosts.unshift(action.payload);
+            return state;
         },
-        updatePostReducer: (state, action: PayloadAction<Post>) => {
-          return state.forEach((post) => {
-            if(post._id === action.payload._id){
-                post.enable = action.payload.enable;
-            }
-           })
+        deletePostReducer: (state, action) => {
+            // console.log(action.payload)
+        state.allPosts = state.allPosts.filter((post) => post._id !== action.payload); 
+        // console.log(state.allPosts.length)
+        return state; 
+        },
+
+        updatePostReducer: (state, action: PayloadAction<Poster>) => {
+        console.log(state,action)
         },
     },
 });
-export const { initializePostsReducer,addPostReducer,deletePostReducer,updatePostReducer} = postSlice.actions;
+
+
+
+
+export const { initializePostsReducer,clearPostReducer,addPostReducer,deletePostReducer,updatePostReducer } = postSlice.actions;
 export default postSlice.reducer;

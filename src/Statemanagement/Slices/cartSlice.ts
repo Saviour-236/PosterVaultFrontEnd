@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Post } from "../interfaces";
+import { Poster } from "../interfaces";
 
-const initialState: Post[] = [];
+const initialState: Poster[] = [];
 
 const CartSlice = createSlice({
     name: 'CartSlice',

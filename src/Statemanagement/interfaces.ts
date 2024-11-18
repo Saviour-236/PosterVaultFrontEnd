@@ -1,8 +1,9 @@
 
 // Post interface 
-export interface Post {
+export interface Poster {
     _id: string;
     title: string;
+    category: string;
     description: string;
     views: number;
     price: number;
@@ -10,13 +11,32 @@ export interface Post {
     alt: string;
     author: string;
     enable: boolean;
+    upLoadingDate: Date;
+    lastUpdated: Date;
 }
 
 // User interface
-export interface User{
+export interface User {
     _id: string;
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     profilePic: string;
-    admin: boolean;
+    role: string;
+    phone: string;
+    address: {
+        city: string;
+        state: string;
+        country: string;
+        pincode: string;
+    };
+    whishlist: Poster[];
+    cart: Poster[];
+    orders: Poster[];
+    verified: boolean;
+    //password: string; hide password from the client side
+    purchaseHistory: {
+        date: Date;
+        items: Poster[];
+    }[];
 }

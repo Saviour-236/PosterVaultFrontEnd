@@ -1,68 +1,85 @@
 import { RootState } from "../Statemanagement/store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Outlet, useNavigate } from "react-router-dom";
-import { initializeUser } from "../Statemanagement/Slices/userSlice";
+import { useNavigate, Outlet,  } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { baseAddress } from "../baseAddress";
+import { setToastValue } from "../Statemanagement/Slices/globelVariables";
 function adminLayout() {
-  const [authTextController, setAuthTextController] = useState(false);
-  const [authText, setAuthtext] = useState("");
-  const [authorized, setAuthorized] = useState(false);
-  const user = useSelector((state: RootState) => state.userSliceState);
+  const [authorized, setAuthorized] = useState<Boolean>();
+  const userState = useSelector((state: RootState) => state.userSliceState);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  
   //actual fetch request for checking user is authorized or not
+  // const checkAuth = async () => {
+  //   // setAuthTextController(true);
+  //   //cheking if user has token or not
+  //   console.log("making request");
+  //   try {
+  //     // console.log("user token", user.token);
+  //     const response = await fetch(`${baseAddress}/admin/checkAuth/${user.token}`, {
+  //       method: "GET",
+  //     });
+  //     if (response.status !== 200) {
+  //       const data = await response.json();
+  //       throw new Error(data.message);
+  //     }
 
-  const checkAuth = async () => {
-    setAuthTextController(true);
-    try {
-      setAuthtext("Authorizing");
-      const response = await fetch(`${baseAddress}/admin/checkAuth`, {
-        method: "GET",
-        credentials: "include"
-      });
-      if (response.status !== 200) {
-        const data = await response.json();
-        throw new Error(data.message);
-      }
-      setAuthtext("Authorized");
-      setAuthTextController(false);
+  //     // authorizedation  complete
+  //     const data = await response.json();
+  //     dispatch(setToastValue({ type: "success", message: data.message }));
+  //     setAuthorized(true);
+  //   } catch (error: any) {
+  //     dispatch(setToastValue({ type: "error", message: error.message }));
+  //     // console.log("got error", error.message);
+  //   }
+  //   finally {
+  //     setAuthResolved(true);
+  //   }
+  // }
+
+  //if user has token then go to auth page
+  // console.log("rendering admin layout time after declaring function ");
+
+
+
+  //hiding the content for mobiles
+  const hidingForMobile = () => {
+    if (window.innerWidth < 640) {
+      return true
+    }
+    return false
+  }
+
+
+  useEffect(() => {
+
+    //cheking that user is logged in or not -- conditin if user has token then user is logged in
+    if( userState.token == null ){
+      console.log("user token token is null ", userState.token);
+      dispatch(setToastValue({ type: "error", message: "please sign in first" }));
+      navigate("/signin");
+    }else{
+      // console.log("user token", userState.token,userState.userInfo);
       setAuthorized(true);
-      return;
-    } catch (error: any) {
-      const err = error.message;
-      setAuthtext(err);
-      navigate("/signIn");
+      dispatch(setToastValue({ type: "success", message: "Welcome Admin" }));
     }
-  };
-  if (!authText) checkAuth();
-  if (Object.keys(user).length === 0) {
-    const user = localStorage.getItem('user');
-    if (user !== null) {
-      dispatch(initializeUser(JSON.parse(user)));
-    }
-  }
-
-const hidingForMobile=()=>{
-  if(window.innerWidth<640){
-    return true
-  }
-  return false
-}
+  }, [setAuthorized]);
   return (
     <>
       {/* just loading purpose and cheking user is it autrized or not */}
-
-      <div> {authTextController && authText}</div>
-
-      {authorized
-        && <>
-          <div className="border ">admin page layout </div>
-          <div className="max-sm:hidden"><Outlet /></div>
-          {hidingForMobile() && <div className="border">mobile view : please open in pc </div>}
-        </>
+      <>
+        {authorized
+          && <>
+            {hidingForMobile()
+              ? <div className="border">mobile view : please open in pc </div>
+              : <div className="max-sm:hidden"><Outlet /></div>
+            }
+          </>
         }
+      </>
+
     </>
   )
 }

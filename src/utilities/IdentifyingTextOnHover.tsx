@@ -6,16 +6,16 @@ function IdentifyingTextOnHover({ children, text }: { children: ReactNode, text:
 
   //for tooltip position
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  let timeOutId: NodeJS.Timeout;// for handling the mouse enter and mouse leave event
+  let [timeOutId,setTimeoutId]= useState<NodeJS.Timeout>();// for handling the mouse enter and mouse leave event
 
   const mouseEnterHandler = () => {
-    timeOutId = setTimeout(() => {
+    setTimeoutId(setTimeout(() => {
       setShow(true)
-    }, 1000);
+    }, 1000));
   }
   const mouseLeaveHandler = () => {
-    clearTimeout(timeOutId);
     setShow(false);
+    clearTimeout(timeOutId);
   }
   // handling the mouse enter and mouse leave event
   const eventHandler = (e: React.MouseEvent) => {
@@ -44,8 +44,8 @@ function IdentifyingTextOnHover({ children, text }: { children: ReactNode, text:
     <>
       <div
         onMouseEnter={eventHandler}
-        onMouseLeave={eventHandler}
         onMouseMove={eventHandler}
+        onMouseLeave={eventHandler}
         className="relative"
       >
         {children}

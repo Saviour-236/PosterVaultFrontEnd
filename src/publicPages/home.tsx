@@ -3,9 +3,9 @@ import Posts from "../reusableComponents/posts";
 import { useSelector } from "react-redux";
 import ViewImageBox from "../reusableComponents/viewImageBox";
 import { RootState } from "../Statemanagement/store";
-import { Post } from "../Statemanagement/interfaces";
+import { Poster } from "../Statemanagement/interfaces";
 function home() {
-  const post: Post | null = useSelector((state: RootState) => state.viewImageSliceState);
+  const post: Poster | null = useSelector((state: RootState) => state.viewImageSliceState);
   return (
     <>
       <main className=" w-full">

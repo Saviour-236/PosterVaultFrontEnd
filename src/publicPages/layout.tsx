@@ -6,7 +6,7 @@ export default function Layout() {
 
   return (
     <>
-      <div className="bg-[#f0f5f7] transition-[background-color] duration-900 ease-in-out  font-serif text-[#062338] h-contain  m-auto 
+      <div className="bg-[#f0f5f7] transition-[background-color] duration-900 ease-in-out  font-serif text-[#062338] min-h-full min-w-fit relative  m-auto 
       dark:bg-[#112031] dark:text-[#c3d3d8]  ">
         <header className="sticky top-0 w-full z-[50]"><Header /></header>
         <Outlet />

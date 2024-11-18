@@ -2,14 +2,13 @@
 import { RootState } from '../../Statemanagement/store';
 import AdminPostCard from './adminPostCard'
 import { useSelector } from 'react-redux';
-import { Post } from '../../Statemanagement/interfaces';
 import { useEffect, useState } from 'react';
 import { fetchPosts } from '../../apiRequests/fetchingRequest';
 import { useDispatch } from 'react-redux';
 import { initializePostsReducer } from '../../Statemanagement/Slices/postSlice';
-
+import { Poster } from '../../Statemanagement/interfaces';
 function Adminposts() {
-    const posts = useSelector((state: RootState) => state.postSliceState);
+    const state = useSelector((state: RootState) => state.postSliceState.allPosts);
     const dispatch = useDispatch();
     const [loadingBit, setLoadingBit] = useState(false);
 
@@ -26,7 +25,7 @@ function Adminposts() {
     return (
         <>{loadingBit ? <div className='text-center text-3xl'>Loading...</div>
             : <div className='space-between justify-center flex flex-wrap p-[1rem] grid-cols-4 max-md:grid-cols-1w'>
-                {posts.map((post: Post) => {
+                {state && state.map((post: Poster) => {
                     return <li key={post._id} className='list-none m-5' >
                         <AdminPostCard post={post} />
                     </li>
