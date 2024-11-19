@@ -52,6 +52,7 @@ const postSlice = createSlice({
         initializePostsReducer: (state, action: PayloadAction<Poster[]> )=> {
             if(state.allPosts == undefined) state.allPosts = [] as Poster[];
              for( const poster of action.payload ){
+                poster.imageUrl = poster.imageUrl.replace("upload/", "upload/w_500,h_500,c_limit/");
                 state.allPosts.push(poster);    
              }
             return state;

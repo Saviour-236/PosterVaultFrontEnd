@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../Statemanagement/store';
 import lightIcon from '../assets/lightThemeIcon.png';
 import darktIcon from '../assets/darkThemeIcon.png';
-import Cart from './Buttons/cartButton';
+import CartButton from './Buttons/cartButton';
 import { Link } from 'react-router-dom';
 import CategoriesButton from './Buttons/categoriesButton';
 import SignInButton from './Buttons/signInButton';
@@ -139,7 +139,7 @@ const Header: React.FC = () => {
                 </span>
 
                 {/* cart Button */}
-                <Cart />
+                { userState.token && <CartButton />}
 
 
                 {/* rendring components bases on user log inned or not  */}

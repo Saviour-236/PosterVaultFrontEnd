@@ -14,15 +14,13 @@ function signInButton() {
                         hover:bg-[#def2f7] hover:w-[6rem] hover:justify-start
                         
                         dark:hover:bg-[#313233] dark:bg-transparent "
-                onClick={handleClick }
+                onClick={handleClick}
                 onMouseEnter={() => setShowSignInText(true)}
                 onMouseLeave={() => setShowSignInText(false)}
             >
-                <img src={SignInIcon} alt="themModes" className="h-6 w-6 rounded-full
-                        
-                        max-sm:h-4 max-sm:w-4
-                        " />
-                {showSignInText && <p className='text-nowrap'>Sign In</p>}
+                <p className='text-nowrap text-[#050e44]'>Sign In</p>
+                {showSignInText && <img src={SignInIcon} alt="themModes" className="h-6 w-6 rounded-full max-sm:h-4 max-sm:w-4
+                        " />}
             </button>
         </>
     )
