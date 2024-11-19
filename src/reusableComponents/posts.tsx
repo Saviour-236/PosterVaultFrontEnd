@@ -45,7 +45,7 @@ function posts() {
                 <Masonry
                     breakpointCols={breakpointColumns}
                     className="flex  "
-                    columnClassName="min-w-fit  ">
+                    columnClassName="min-w-fit ">
                     {state &&
                         state.map((post, index) => (
                              <PostCard post={post}  key={index} />
