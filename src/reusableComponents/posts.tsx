@@ -34,8 +34,8 @@ function posts() {
         })
 
     }, [])
-    if (state && Object.keys(state).length == 0) {
-        return <div className="h-[87vh] w-[100vw] border flex justify-center items-center "><div>Loading</div></div>;
+    if (state  == undefined) {
+        return <div className="h-[87vh] w-[100vw]  flex justify-center items-center "><div>Sorry For Delay "Free server h na"</div></div>;
     }
     return (
         <>

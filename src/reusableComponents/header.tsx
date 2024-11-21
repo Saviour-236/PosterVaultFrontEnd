@@ -106,7 +106,7 @@ const Header: React.FC = () => {
                 <span className='border border-[#9f9fa3] flex items-center p-2 rounded-xl transition-[border] duration-200 ease-in space-x-2  shadow-md shadow-[#070808a2]
 
                 hover:border-[#c1c4c5]
-                
+                max-sm:p-1 
                 dark:bg-transparent dark:text-white dark:border-[#254f7a] dark:hover:border-[#326b91] '>
 
                     {/* search  field */}
