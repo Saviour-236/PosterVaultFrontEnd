@@ -75,7 +75,7 @@ const Header: React.FC = () => {
     }, [userState, toastValue]);
 
     return (
-        <header className="flex overflow-auto items-center border border-[#e1e2e4]  top-[1rem] relative  shadow-md shadow-[#2e363aa2] mb-2 bg-[#f0f5f7] justify-around p-2 rounded-3xl mx-2 
+        <header className="flex overflow-auto items-center border border-[#e1e2e4]  relative  shadow-md shadow-[#2e363aa2]  bg-[#f0f5f7] justify-around p-2 rounded-3xl 
         max-sm:p-1
         lg:justify-between lg:px-[2rem]
         dark:bg-[#112031]  dark:border-[#1d1c7aee]  dark:shadow-[#272361]

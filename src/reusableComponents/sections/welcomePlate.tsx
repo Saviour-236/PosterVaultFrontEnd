@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 function WelcomePlate({ closeTimer }: any) {
     const [TimerValue, setTimerValue] = useState(10);
     const [opacity, setOpacity] = useState(1);
+    const [bg, setBg] = useState({ x: 0, y: 0 });
     const [stopTimeOut, setStopTimeOut] = useState(false);
     const handleTimerClick = () => {
         setStopTimeOut(!stopTimeOut);
@@ -28,11 +29,16 @@ function WelcomePlate({ closeTimer }: any) {
         setTimeout(() => setTimerValue(TimerValue - 1), 1000);
     });
     return (
-        <section className={` ${opacity ? "opacity-[1]" : "opacity-[0]"} transition-opacity duration-[1s] ease-in  fixed z-[63] min-h-[100vh] max-h-[100vh] min-w-[100vw] overflow-auto bg-[url('/bg.webp')] bg-cover bg-scroll space-y-3`}
+        <section className={` ${opacity ? "opacity-[1]" : "opacity-[0]"} transition-opacity duration-[1s] ease-in  fixed z-[63] min-h-[100vh]  bg-[length:120vw_120vh] max-h-[130vh] min-w-[100vw] overflow-auto bg-[url('/bg.webp')] space-y-3`
+        }
+            style={{ backgroundPositionX: `${-100+bg.x}px`,backgroundPositionY: `${-100+bg.y}px` }}
             onMouseDown={handleMouseDown}
             onTouchStart={handleMouseDown}
             onMouseUp={handleMouseUp}
             onTouchEnd={handleMouseUp}
+            onMouseMove={(e) => {
+                setBg({ x: e.clientX / 10, y: e.clientY / 10 });
+            }}
         >
 
             <div className="border sm:absolute top-[5rem] left-[10rem] p-5 rounded-lg border-[#3bffad75] shadow-black bg-[#27ec9a15] max-sm:mt-[6rem] shadow-sm max-md:top-[5rem] max-md:left-[2rem] max-md:right-[2rem] max-sm:p-2 select-none space-y-3">

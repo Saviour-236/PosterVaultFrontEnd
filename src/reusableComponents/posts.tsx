@@ -13,7 +13,7 @@ function posts() {
     const breakpointColumns = {
         default: 4,
         1100: 3,
-        700: 2,
+        591: 2
     };
   
     const dispatch = useDispatch<AppDispatch>();
@@ -40,12 +40,12 @@ function posts() {
     return (
         <>
             {/* full section conationg all post */}
-            <div className="min-w-fit   mt-4 
+            <div className="min-w-fit   mt-5 p-3 
          "  >
                 <Masonry
                     breakpointCols={breakpointColumns}
-                    className="flex  "
-                    columnClassName="min-w-fit ">
+                    className="flex space-x-2  "
+                    columnClassName="space-y-2  ">
                     {state &&
                         state.map((post, index) => (
                              <PostCard post={post}  key={index} />
