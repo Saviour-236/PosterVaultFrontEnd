@@ -75,15 +75,15 @@ const Header: React.FC = () => {
     }, [userState, toastValue]);
 
     return (
-        <header className="flex overflow-auto items-center border border-[#e1e2e4]  relative  shadow-md shadow-[#2e363aa2]  bg-[#f0f5f7] justify-around p-2 rounded-3xl 
-        max-sm:p-1
-        lg:justify-between lg:px-[2rem]
+        <header className="flex overflow-auto items-center    relative  shadow-md shadow-[#2e363aa2]  bg-[#f0f5f7] justify-around p-2 rounded-3xl 
+        max-sm:p-1 min-w-[95vw]
+        lg:justify-between lg:px-[1.5rem]
         dark:bg-[#112031]  dark:border-[#1d1c7aee]  dark:shadow-[#272361]
         "
         >
             <Toaster />
             {/* Logo */}
-            <div className="flex items-center min-w-fit mx-3 ">
+            <div className="flex  items-center min-w-fit mx-3 ">
 
                 <span className="ml-2 flex space-x-2 text-xl font-bold dark:text-white
                 w-fit
@@ -156,7 +156,7 @@ const Header: React.FC = () => {
                 <div className="flex items-center  min-w-fit">
                     <button
                         onClick={toggleDarkMode}
-                        className="mr-3 p-2 rounded-full transition-[background-color]  ease-in duration-900 bg-gray-200 
+                        className="p-2 rounded-full transition-[background-color]  ease-in duration-900 bg-gray-200 
                         
                         dark:hover:bg-[#7e7f80] dark:bg-transparent "
                     >
@@ -166,8 +166,8 @@ const Header: React.FC = () => {
                         " />
                     </button>
                     {/* User Profile Drop Down Button */}
-                    {userState.userInfo && <UserProfileDropDownButton />}
                 </div>
+                {userState.userInfo && <UserProfileDropDownButton />}
             </div>
         </header>
     )

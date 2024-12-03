@@ -11,9 +11,9 @@ function profileDropDownButton() {
     }
     return (
         <>
-            <div className="dropdown relative">
+            <div className="dropdown  relative">
                 {/* Dropdown menu Icon or button */}
-                <button className="btn space-x-2 p-1 flex items-center rounded   focus:btn-outline focus:text-orange-500 normal-case text-orange-500 ml-2"
+                <button className=" flex items-center rounded   focus:btn-outline focus:text-orange-500 normal-case text-orange-500 "
                     onClick={handleMenuClick}>
                     <div className="w-9 h-9 border border-[#ffffff] rounded-full">
                         {state.userInfo.profilePic !== ""

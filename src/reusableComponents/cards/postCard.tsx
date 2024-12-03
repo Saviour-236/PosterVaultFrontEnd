@@ -41,7 +41,7 @@ const PostCards: React.FC<Props> = ({ post }) => {
     return (
         <>
 
-            <div className="h-fit w-fit sm:m-1  relative"
+            <div className="h-fit w-fit   relative"
                 onMouseEnter={handleCardMouseEnter}
                 onMouseLeave={handleCardMouseLeave}
             >
@@ -55,10 +55,12 @@ const PostCards: React.FC<Props> = ({ post }) => {
                 {/* actual image */}
                 <img src={post.imageUrl} alt={post.alt} className={`${!isLoaded 
                 ? "opacity-0 h-0" 
-                : " lg:min-h-[10rem]  max-h-[36rem]  hover:cursor-pointer opacity-100 max-w-[19.5rem] rounded-md max-sm:w-[11.7rem]"
-            
-            } 
-                 transition-opacity duration-1000 ease-linear`}
+                : " opacity-100  "} 
+                hover:cursor-pointer w-[24vw] rounded-md
+                 transition-opacity duration-1000 ease-linear 
+                 max-sm:w-[47vw]
+                 max-md:w-[32vw]
+                 `}
 
                 onLoad={handleOnLoad}
                 />
@@ -85,7 +87,9 @@ const PostCards: React.FC<Props> = ({ post }) => {
                     </div>
                 }
                 {isHovered && isLoaded &&
-                    <div className="flex space-x-5 absolute bottom-1 p-1  ">
+                    <div className="flex  absolute bottom-1  w-full  justify-around  
+                    max-md:space-x-5
+                    ">
                         {/* Add to cart button  */}
                         <AddToCart post={post} />
                         {/* Buy button */}

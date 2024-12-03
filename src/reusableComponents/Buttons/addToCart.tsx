@@ -27,7 +27,8 @@ function AddToCart({ post }: Props) {
         <>
             <button
                 type="button"
-                className={`rounded-lg border   ${isRendered ? "opacity-[1] scale-100 " : "opacity-20 scale-95 "}  transition-all duration-[0.9s] ease-linear bg-[#ffffff75] px-4 py-1 text-sm font-medium text-white
+                className={`rounded-lg border   ${isRendered ? "opacity-[1] scale-100 " : "opacity-20 scale-95 "}  transition-all duration-[0.9s] ease-linear bg-[#ffffff75] px-4 py-1 text-sm font-bold text-black
+                 max-sm:text-[0.65rem] max-sm:p-[0.15rem] 
                             dark:bg-[#5262839c] dark:border-[#526283] dark:text-[#f7fcff] `}
                 onClick={() => handleAddToCart(post)}
             >

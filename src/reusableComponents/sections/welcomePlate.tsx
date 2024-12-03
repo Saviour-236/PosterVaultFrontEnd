@@ -29,7 +29,10 @@ function WelcomePlate({ closeTimer }: any) {
         setTimeout(() => setTimerValue(TimerValue - 1), 1000);
     });
     return (
-        <section className={` ${opacity ? "opacity-[1]" : "opacity-[0]"} transition-opacity duration-[1s] ease-in  fixed z-[63] min-h-[100vh]  bg-[length:120vw_120vh] max-h-[130vh] min-w-[100vw] overflow-auto bg-[url('/bg.webp')] space-y-3`
+        <section className={` ${opacity ? "opacity-[1]" : "opacity-[0]"} transition-opacity duration-[1s] ease-in  fixed z-[63] min-h-[100vh]  sm:bg-[length:120vw_120vh] max-h-[130vh] min-w-[100vw] overflow-auto  space-y-3 
+        bg-[url('https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=600')] 
+        sm:bg-[url('/bg.webp')] 
+        `
         }
             style={{ backgroundPositionX: `${-100+bg.x}px`,backgroundPositionY: `${-100+bg.y}px` }}
             onMouseDown={handleMouseDown}
@@ -56,7 +59,8 @@ function WelcomePlate({ closeTimer }: any) {
             >
                 Moving to Home Page in 00 : 0{TimerValue}
             </span>
-
+            {/* move button  */}
+            <button className="p-3 border rounded-lg z-[900] " onClick={()=>closeTimer()} >move</button>
             {/* Front End Tech stack container */}
             <div className="border p-3 border-[#00f7ff50] bg-[#0da2ac27] sm:absolute top-[18rem] rounded-xl  left-[28rem] text-white w-fit max-sm:w-full">
                 <p className="text-[1.5rem] max-sm:text-[1rem]  sm:text-center font-[500]">FrontEnd TechStack</p>
