@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../Statemanagement/store';
-import lightIcon from '../assets/lightThemeIcon.png';
-import darktIcon from '../assets/darkThemeIcon.png';
 import CartButton from './Buttons/cartButton';
 import { Link } from 'react-router-dom';
 import CategoriesButton from './Buttons/categoriesButton';
@@ -13,9 +11,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import { setToastValue } from '../Statemanagement/Slices/globelVariables';
 import { initializeUser } from '../Statemanagement/Slices/userSlice';
 import { jwtDecode } from "jwt-decode";
+import ThemeModeButton from './Buttons/themeModeButton';
 
 const Header: React.FC = () => {
-    const [darkMode, setDarkMode] = useState(false);// dark mode state
     const [searchValue, setSearchValue] = useState('');// search value state
     const dispatch = useDispatch<AppDispatch>();
     const userState = useSelector((state: RootState) => state.userSliceState);
@@ -25,11 +23,11 @@ const Header: React.FC = () => {
     if (!userState.token) {
         const localStorageUser = localStorage.getItem('user');
         // console.log("localstorage", localStorageUser);
-        
+
         // if user present in local storage then dispatching user to redux store
         if (localStorageUser) {
             const parsedUser = JSON.parse(localStorageUser);
-            const decodedToken = jwtDecode(parsedUser.accessToken) ;
+            const decodedToken = jwtDecode(parsedUser.accessToken);
             // console.log("decodedToken", decodedToken);
             const { userInfo } = decodedToken as any;
             // saving user in redux store 
@@ -45,15 +43,8 @@ const Header: React.FC = () => {
     };
 
     //handling dark mode
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
-        if (darkMode) {
-            document.documentElement.classList.remove('dark');
-        } else {
-            document.documentElement.classList.add('dark');
-        }
-    };
-   
+    
+
 
 
     useEffect(() => {
@@ -75,17 +66,18 @@ const Header: React.FC = () => {
     }, [userState, toastValue]);
 
     return (
-        <header className="flex overflow-auto items-center    relative  shadow-md shadow-[#2e363aa2]  bg-[#f0f5f7] justify-around p-2 rounded-3xl 
-        max-sm:p-1 min-w-[95vw]
-        lg:justify-between lg:px-[1.5rem]
-        dark:bg-[#112031]  dark:border-[#1d1c7aee]  dark:shadow-[#272361]
+        <header className="flex overflow-auto items-center  relative  shadow-md shadow-[#2e363aa2]  bg-[#f0f5f7] min-w-[100vw] 
+        justify-between p-2 
+        max-sm:p-1 
+        md:justify-between md:px-[1rem]
+        dark:bg-[#112031]  dark:border-[#1d1c7aee]  dark:shadow-[#2e2e4d]
         "
         >
             <Toaster />
             {/* Logo */}
-            <div className="flex  items-center min-w-fit mx-3 ">
+            <div className="flex  items-center min-w-fit mx-3  ">
 
-                <span className="ml-2 flex space-x-2 text-xl font-bold dark:text-white
+                <span className="flex space-x-2 text-xl font-bold dark:text-white
                 w-fit
                 max-sm:text-[0.7rem]
                 ">
@@ -100,8 +92,8 @@ const Header: React.FC = () => {
 
 
                 {/* Categories Button  */}
-                <CategoriesButton />
-                
+                <div className='max-sm:hidden'><CategoriesButton /></div>
+
                 {/* search bar */}
                 <span className='border border-[#9f9fa3] flex items-center p-2 rounded-xl transition-[border] duration-200 ease-in space-x-2  shadow-md shadow-[#070808a2]
 
@@ -139,7 +131,7 @@ const Header: React.FC = () => {
                 </span>
 
                 {/* cart Button */}
-                { userState.token && <CartButton />}
+                <div className=''>{userState.token && <CartButton />}</div>
 
 
                 {/* rendring components bases on user log inned or not  */}
@@ -152,22 +144,13 @@ const Header: React.FC = () => {
                         <SignUpButton />
                     </div>}
 
-                {/* theme Icon */}
-                <div className="flex items-center  min-w-fit">
-                    <button
-                        onClick={toggleDarkMode}
-                        className="p-2 rounded-full transition-[background-color]  ease-in duration-900 bg-gray-200 
-                        
-                        dark:hover:bg-[#7e7f80] dark:bg-transparent "
-                    >
-                        <img src={darkMode ? lightIcon : darktIcon} alt="themModes" className="h-6 w-6 rounded-full
-                        
-                        max-sm:h-4 max-sm:w-4
-                        " />
-                    </button>
-                    {/* User Profile Drop Down Button */}
+                {/* theme Button */}
+               <div>
+                <ThemeModeButton />
+               </div>
+                <div>
+                    {userState.userInfo && <UserProfileDropDownButton />}
                 </div>
-                {userState.userInfo && <UserProfileDropDownButton />}
             </div>
         </header>
     )

@@ -21,7 +21,7 @@ function ShowCartItems() {
     return (
         <>
 
-            <section className="border  border-[#9f9fa7] m-[2rem] p-4 rounded-lg flex justify-around
+           {<section className="border  border-[#9f9fa7] m-[2rem] p-4 rounded-lg flex justify-around
             max-sm:block 
             dark:border-[#1f3a6b]
             "
@@ -35,7 +35,7 @@ function ShowCartItems() {
                 ">
                    <p>Total items in cart: {items.length} </p> 
                     <hr />
-                    <p>Toatal price: {items.reduce((acc, item) => acc + item.price, 0)}</p>
+                    <p>Toatal price: {items.reduce((acc, item) => acc + item.poster.price * item.quantity, 0)}</p>
                     {/* order button  */}
                     <button className="text-[0.8rem] px-2 border  p-1  rounded border-[#9b9797] flex items-center space-x-1 
                     hover:border-[#09ac2f] hover:scale-105 transition-transform duration-300 ease-in
@@ -55,7 +55,7 @@ function ShowCartItems() {
                                 items.map((item, index) => {
                                     return (
                                         <li key={index} className="relative w-fit  py-[1rem] border-[#a59e9e]" >
-                                            <CartPostCard post={item} />
+                                            <CartPostCard item={item} />
                                         </li>
                                     )
                                 })
@@ -87,7 +87,7 @@ function ShowCartItems() {
                 ">
                         Total items in cart: {items.length}
                         <hr className="border-[#030303] dark:border-[#138125]  " />
-                        Toatal price: {items.reduce((acc, item) => acc + item.price, 0)}
+                        Toatal price: {items.reduce((acc, item) => acc + item.poster.price*item.quantity, 0)}
                     </div>
                     {/* order button  */}
                     <button className="text-[0.8rem] px-2 border p-1 float-right rounded border-[#9b9797] flex items-center space-x-1 
@@ -99,7 +99,7 @@ function ShowCartItems() {
                         </svg>
                     </button>
                 </div>
-            </section>
+            </section>}
         </>
     )
 }

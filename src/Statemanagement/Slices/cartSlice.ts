@@ -1,17 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Poster } from "../interfaces";
+import { cartPoster } from "../interfaces";
 
-const initialState: Poster[] = [];
+
+const initialState = [] as cartPoster[];
 
 const CartSlice = createSlice({
     name: 'CartSlice',
     initialState, 
     reducers:{
         addTocart: (state,action)=>{
-            state.push(action.payload);
-        },
+            let cartItem = {poster:action.payload,quantity:1}
+            if(state.length===0){
+                //array is empty adding the first item
+                state.push(cartItem);
+                return state;
+            }
+            //if cart is not empty then adding the new item
+            for (let item of state){
+                //checking if the item is already in the cart
+                if(item.poster._id===action.payload._id){
+                   // item already in the cart
+                   item.quantity+=1;
+                    return state;
+               }
+        }
+        state.push(cartItem);
+        return state;
+    },
         removeFromCart: (state,action) => {
-            return state.filter( post => post._id!== action.payload)
+            return state.filter( item => item.poster._id!== action.payload)
         }
     }
 })

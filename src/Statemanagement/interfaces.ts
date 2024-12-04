@@ -1,5 +1,5 @@
 
-// Post interface 
+// Poster interface 
 export interface Poster {
     _id: string;
     title: string;
@@ -39,4 +39,10 @@ export interface User {
         date: Date;
         items: Poster[];
     }[];
+}
+
+// cartState Interface
+export interface cartPoster {
+    poster: Poster;
+    quantity: number;
 }

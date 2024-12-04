@@ -29,7 +29,7 @@ function WelcomePlate({ closeTimer }: any) {
         setTimeout(() => setTimerValue(TimerValue - 1), 1000);
     });
     return (
-        <section className={` ${opacity ? "opacity-[1]" : "opacity-[0]"} transition-opacity duration-[1s] ease-in  fixed z-[63] min-h-[100vh]  sm:bg-[length:120vw_120vh] max-h-[130vh] min-w-[100vw] overflow-auto  space-y-3 
+        <section className={` ${opacity ? "opacity-[1]" : "opacity-[0]"} transition-opacity duration-[1s] ease-in  fixed z-[63] min-h-[100vh]  bg-[length:120vw_120vh] max-h-[130vh] min-w-[100vw] overflow-auto  space-y-3 
         bg-[url('https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=600')] 
         sm:bg-[url('/bg.webp')] 
         `

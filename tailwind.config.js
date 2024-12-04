@@ -7,7 +7,7 @@ export default {
   ],
   theme: {
     screens: {
-      'sm': '440px',// end point of large width mobiles
+      'sm': '550px',// end point of large width mobiles
       'md': '1000px',//end point of tablet
     },
     extend: {},
