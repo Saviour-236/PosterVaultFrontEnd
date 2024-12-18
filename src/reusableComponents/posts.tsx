@@ -28,7 +28,6 @@ function posts() {
             .catch((err) => {
                 console.log(err)
             })
-        // console.log("posts are loaded")
         return (() => {
             dispatch(clearPostReducer())
         })
