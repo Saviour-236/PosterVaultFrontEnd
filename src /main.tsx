@@ -20,8 +20,7 @@ import SignInPage from './publicPages/signIn'
 import AdminPage from './protectedPages/adminPage'
 import CartPage from './publicPages/cartPage'
 import ErrorPage from './publicPages/errorPage'
-
-
+import CategorySearchPage from './publicPages/categorySearchPage'
 //layout components
 import Layout from './publicPages/layout'
 import AdminLayout from './protectedPages/adminLayout'
@@ -41,7 +40,10 @@ const Router = createBrowserRouter([
         path: "/cart",
         element: <CartPage />
       },
-
+      {
+        path: "/search/:searchValue",
+        element: <CategorySearchPage />
+      },
       {
         path: '/signIn',
         element: <SignInPage />,
@@ -64,12 +66,12 @@ const Router = createBrowserRouter([
 
     ],
   },
-  {path: '*', element: <ErrorPage />}
+  { path: '*', element: <ErrorPage /> }
 
 ])
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  
-    <Provider store={store} >
-      <RouterProvider router={Router} />
-    </Provider>
+
+  <Provider store={store} >
+    <RouterProvider router={Router} />
+  </Provider>
 )

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../Statemanagement/store";
 import LogOutButton from "./logOutButton";
-function profileDropDownButton() {
+function profileDropDownButton({loggedIn}: {loggedIn:boolean}) {
     const [showDropDown, setShowDropDown] = useState(false);
     const state = useSelector((state: RootState) => state.userSliceState);
     const handleMenuClick = () => {
@@ -11,6 +11,7 @@ function profileDropDownButton() {
     }
     return (
         <>
+        {loggedIn &&
             <div className="dropdown  relative">
                 {/* Dropdown menu Icon or button */}
                 <button className=" flex items-center rounded   focus:btn-outline focus:text-orange-500 normal-case text-orange-500 "
@@ -100,7 +101,7 @@ function profileDropDownButton() {
                         </div>
                     </div>
                 }
-            </div>
+            </div>}
         </>)
 }
 

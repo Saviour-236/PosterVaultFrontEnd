@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom"
 
-function SignUpButton() {
+function SignUpButton({ loggedIn }: { loggedIn: boolean }) {
     const Navigate = useNavigate();
     const handleClick = () => {
         Navigate("/signUp");
     }
     return (
         <>
-            <button
+            {!loggedIn && <button
                 className=" p-2 flex transition-all duration-200 ease-linear border space-x-1 rounded-md bg-[#d9f3e2]
                 hover:bg-[#bef5d2]
                 dark:bg-[#abe0f050]    "
@@ -31,7 +31,9 @@ function SignUpButton() {
                     </g>
                 </svg>
                 <p className='text-nowrap'>Sign Up</p>
-            </button></>
+            </button>
+            }
+        </>
     )
 }
 

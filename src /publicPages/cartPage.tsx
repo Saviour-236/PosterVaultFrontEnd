@@ -4,7 +4,7 @@ function cartPage() {
     return (
         <>
             <ShowCartItems />
-            <Posts />
+            <Posts category={"allPosts"}/>
         </>
     )
 }
