@@ -23,5 +23,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/reusableComponents/sections/classicArtPosters.tsx"]
+ "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
