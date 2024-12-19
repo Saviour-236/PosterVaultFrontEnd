@@ -3,7 +3,6 @@ import {  useState } from "react";
 import { Poster } from "../../Statemanagement/interfaces";
 import AddToCart from "../Buttons/addToCart";
 import BuyButton from "../Buttons/buy";
-import IdentifyingTextOnHover from "../../utilities/IdentifyingTextOnHover";
 interface Props {
     post: Poster;
 }
@@ -70,11 +69,11 @@ const PostCards: React.FC<Props> = ({ post }) => {
                 {
                     isLoaded &&
                     <div className="absolute top-0 right-3">
-                        <IdentifyingTextOnHover text="Like">
+                        <abbr title="Like">
                             <p className="text-[1.5rem] hover:cursor-pointer"
                                 onClick={handleLikeClick}
                             >{liked ? "❤️" : "🤍"} </p>
-                        </IdentifyingTextOnHover>
+                        </abbr>
                     </div>
                 }
 

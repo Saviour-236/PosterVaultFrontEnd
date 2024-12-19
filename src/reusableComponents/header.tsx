@@ -79,11 +79,14 @@ const Header: React.FC = () => {
                 </span>
             </div>
             {/* Right side of header */}
-            <div className='items-center  flex gap-1 w-fit '>
+            <div className='items-center flex space-x-3 w-fit '>
+
                 {/* Categories Button  */}
                 <div className='max-sm:hidden'><CategoriesButton /></div>
+
                 {/* search bar */}
                 <SearchButton />
+
                 {/* cart Button */}
                 <CartButton loggedIn={loggedIn} />
                 <HomeMenuDropDown loggedIn={loggedIn} />

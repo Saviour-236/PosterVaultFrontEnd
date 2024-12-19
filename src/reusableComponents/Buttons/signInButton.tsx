@@ -1,8 +1,5 @@
-import { useState } from "react";
-import SignInIcon from "../../assets/icons-sign-in-24.png";
 import { useNavigate } from "react-router-dom";
-function signInButton({loggedIn}:{loggedIn:boolean}) {
-    const [showSignInText, setShowSignInText] = useState(false);// show sign in text state
+function signInButton({ loggedIn }: { loggedIn: boolean }) {
     const Navigate = useNavigate();
     const handleClick = () => {
         Navigate("/signIn");
@@ -10,19 +7,17 @@ function signInButton({loggedIn}:{loggedIn:boolean}) {
     return (
         <>{!loggedIn &&
             <button
-                className=" p-2 flex space-x-1 w-[3rem] rounded-full transition-[background-color,width]   ease-in duration-[0.5s]  overflow-hidden  justify-center  min-w-fit shadow-lg h-fit
-                        hover:bg-[#def2f7] hover:w-[6rem] hover:justify-start
-                        
-                        dark:hover:bg-[#1083f742] dark:bg-transparent  "
+                className="border border-[#b1aeae] rounded-md p-2 dark:border-[#2b43cc] hover:bg-[#b3b0b025] dark:hover:bg-[#347deb42] transition-all ease-in-out duration-300 "
                 onClick={handleClick}
-                onMouseEnter={() => setShowSignInText(true)}
-                onMouseLeave={() => setShowSignInText(false)}
+
             >
-                <p className='text-nowrap  text-[#050e44] dark:text-white'>Sign In</p>
-                {showSignInText && <img src={SignInIcon} alt="themModes" className="h-6 w-6 rounded-full max-sm:h-4 max-sm:w-4
-                        " />}
+                
+                <svg className="flex-shrink-0 w-5 h-5 text-[#6b6868] transition duration-75 dark:text-[#ffff] group-hover:text-gray-900 dark:text-[#c4c1c1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"></path>
+                </svg>
+
             </button>
-            }
+        }
         </>
     )
 }

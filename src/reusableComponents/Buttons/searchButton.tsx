@@ -59,9 +59,9 @@ function search() {
             // console.log(target.innerText)
         }
         return (
-            <div className="fixed max-h-[9.6rem] top-12  p-2 rounded-lg space-y-2 bg-white z-[57] overflow-hidden
-            dark:bg-[#131124a1]
-            ">
+            
+                <ul className="type-none space-y-2 fixed max-h-[9.6rem] top-12  p-2 rounded-lg  bg-white z-[57] overflow-auto max-sm:right-2 border
+            dark:bg-[#131124a1] max-sm">
                 {filteredVaulues.map((value, index) => (
                     <li key={index} className='border hover:cursor-pointer border-gray-300 p-2 rounded-lg shadow-md
                     dark:bg-[#14162ccc] dark:border-[#2947f1e1]
@@ -72,25 +72,26 @@ function search() {
                         {value}
                     </li>
                 ))}
-            </div>
+                </ul>
+            
         )
     }
 
     return (
-        <span className='border relative b`order-[#9f9fa3] flex items-center p-2 rounded-xl transition-[border] duration-200 ease-in space-x-2  shadow-md shadow-[#070808a2]
+        <span className=' relative b`order-[#9f9fa3] flex items-center p-2 rounded-lg transition-[border] duration-200 ease-in space-x-2  shadow-sm shadow-[#070808a2]
 
                 hover:border-[#c1c4c5]
                 max-sm:p-1 
-                dark:bg-transparent dark:text-white dark:border-[#254f7a] dark:hover:border-[#326b91] '>
+                dark:bg-transparent dark:text-white dark:border dark:border-[#2141d1bd] dark:hover:border-[#326b91] '>
 
             {/* search  field */}
             <input type="text" id='searchBox'
                 onChange={handleOnChange}
                 value={inputValue? inputValue : ""}
                 placeholder="search......"
-                className='bg-transparent w-[9rem] h-[1rem]  min-w-[1rem] outline-none text-[#616769] text-[0.8rem]
+                className='bg-transparent w-[9rem] h-[1.1rem]  min-w-[1rem] outline-none text-[#616769] text-[0.9rem] first-letter:
                     
-                    max-sm:w-[5rem] max-sm:h-[1rem] max-sm:text-[0.7rem]
+                    max-sm:w-[5rem] max-sm:h-[1.3rem] max-sm:text-[0.7rem]  max-sm:pl-1
                     
                     dark:text-[rgb(173,180,182)]' />
             {/* dropdown */}

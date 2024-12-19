@@ -11,7 +11,6 @@ import edit from "../../assets/edit.png";
 import deleteIcon from "../../assets/delete.png";
 import tik from "../../assets/tik.png";
 import cross from "../../assets/cross.png";
-import IdentifyingTextOnHover from "../../utilities/IdentifyingTextOnHover";
 import save from "../../assets/save.png";
 import deletePostRequest from "../../apiRequests/deleteRequests";
 import { RootState } from "../../Statemanagement/store";
@@ -219,7 +218,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                     <div className="mt-4  flex items-center gap-8 text-xs ">
                         <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2 ">
                             {/* Edit  button */}
-                            <IdentifyingTextOnHover text="Edit">
+                            <abbr title="Edit">
                                 <div
                                     className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center cursor-pointer text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
 
@@ -230,20 +229,21 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                         <img id="edit" onClick={handleEditClick} src={edit} alt="" className="h-[2rem] " />
                                     )}
                                 </div>
-                            </IdentifyingTextOnHover>
+                            </abbr>
                             {/* Delete button */}
-                            <IdentifyingTextOnHover text="Delete">
+
+                            <abbr title="Delete">
                                 <button
                                     className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3"
                                     onClick={() => setIsDelete(true)}
                                 >
                                     <img src={deleteIcon} className="h-[2rem]" alt="delete.png" />
                                 </button>
-                            </IdentifyingTextOnHover>
+                            </abbr>
 
                             {/*  save button*/}
                             {inEditMode &&
-                                <IdentifyingTextOnHover text="Save">
+                                <abbr title="Save">
                                     <button
                                         onClick={handleSaveEvent}
                                         className="inline-flex items-center justify-center rounded-md border bg-white px-[0.5rem] py-[0.25rem] text-center text-base font-medium text-dark shadow-1 hover:border-[#09a5e3] disabled:border-gray-3 disabled:bg-gray-3 disabled:text-dark-5 dark:bg-gray-2 dark:shadow-box-dark dark:hover:bg-dark-3">
@@ -252,11 +252,12 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                             className="h-[2rem]"
                                             alt="save" />
                                     </button>
-                                </IdentifyingTextOnHover>}
+                                </abbr>
+                            }
 
 
                             {/*  for enable or disable*/}
-                            <IdentifyingTextOnHover text="Enable">
+                            <abbr title="Enable">
                                 <div
                                     // onClick={handleEnableClick}
                                     className=" top-[0.5rem] border border-[#09a5e3] bg-white rounded-full right-[0.5rem] "
@@ -267,7 +268,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                         <div className="   rounded-full h-[1.5rem] w-[1.5rem] "></div>
                                     )}
                                 </div>
-                            </IdentifyingTextOnHover>
+                            </abbr>
                             <div className={`w-fit transition-bg duration-500 ease-in flex border border-[#02e934] font-bold m-3 text-[0.9rem] p-[0.5rem] rounded-md bottom-0 right-0  bg-transparent bg-opacity-90  ${inEditMode && "border border-black "
                                 }`}>
                                 ₹

@@ -22,9 +22,9 @@ function categoriesButton() {
 
     return (
         <>
-            <button className={`border static border-[#a7a3a3b7] py-1 px-3 rounded-xl shadow-md shadow-[#222121] text-[rgb(117,115,115)] hover:scale-105 transition-transform duration-300 ease-in ${show ? 'bg-[#ffffff]' : ''}
+            <button className={`border static border-[#a7a3a3b7] py-1 px-3 rounded-lg shadow-md shadow-[#222121] text-[rgb(117,115,115)] hover:scale-105 transition-transform duration-300 ease-in ${show ? 'bg-[#ffffff]' : ''}
             max-sm:text-[0.7rem]
-            dark:shadow-[#8183e7] dark:border-[#0c5d7e] dark:shadow-sm dark:text-[#c9bfbf]
+            dark:shadow-[#8183e7] dark:border-[#2141d1bd] dark:shadow-sm dark:text-[#c9bfbf]
             `} 
                 onClick={() => setShow(!show)}>
                 Categories

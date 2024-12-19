@@ -7,30 +7,18 @@ function SignUpButton({ loggedIn }: { loggedIn: boolean }) {
     }
     return (
         <>
-            {!loggedIn && <button
-                className=" p-2 flex transition-all duration-200 ease-linear border space-x-1 rounded-md bg-[#d9f3e2]
-                hover:bg-[#bef5d2]
-                dark:bg-[#abe0f050]    "
+            {!loggedIn && 
+            <button
+                className="border border-[#b1aeae] rounded-md p-2 dark:border-[#2b43cc] hover:bg-[#b3b0b025] dark:hover:bg-[#347deb42] transition-all ease-in-out duration-300  "
                 onClick={handleClick}
             >
-                <svg className='h-6 w-6'
-                    version="1.0" xmlns="http://www.w3.org/2000/svg"
-                    width="24.000000pt" height="24.000000pt" viewBox="0 0 24.000000 24.000000"
-                    preserveAspectRatio="xMidYMid meet">
-
-                    <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
-                        fill={"#000000"} stroke="none">
-                        <path d="M90 206 c-28 -35 11 -93 48 -70 35 22 22 84 -18 84 -10 0 -23 -7 -30
--14z m47 -22 c8 -21 -13 -42 -28 -27 -13 13 -5 43 11 43 6 0 13 -7 17 -16z"/>
-                        <path d="M56 89 c-14 -11 -26 -29 -26 -40 0 -16 7 -19 45 -19 25 0 45 5 45 10
-0 6 -17 10 -37 10 l-38 1 24 19 c13 11 34 20 47 20 13 0 24 5 24 10 0 18 -57
-11 -84 -11z"/>
-                        <path d="M156 84 c-31 -30 -9 -84 34 -84 24 0 50 26 50 50 0 24 -26 50 -50 50
--10 0 -26 -7 -34 -16z m50 -19 c14 -13 14 -17 0 -31 -15 -14 -17 -14 -32 0
--12 13 -13 18 -2 30 16 19 16 19 34 1z"/>
-                    </g>
-                </svg>
-                <p className='text-nowrap'>Sign Up</p>
+                <svg className="  w-5 h-5 text-[#6b6868]  transition duration-75   dark:group-hover:text-white dark:text-[#b4b2b2]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"></path>
+                  <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"></path>
+                  <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"></path>
+                  <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"></path>
+               </svg>
+               
             </button>
             }
         </>

@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Statemanagement/store";
 import { useNavigate } from "react-router-dom";
 import darkThemeCartIcon from "../../assets/darkThemeCartIcon.png";
-import IdentifyingTextOnHover from "../../utilities/IdentifyingTextOnHover";
 
 function cart({ loggedIn }: { loggedIn: boolean }) {
     const [totalInCart, setTotalInCart] = useState(0);// total items in cart state
@@ -22,8 +21,8 @@ function cart({ loggedIn }: { loggedIn: boolean }) {
 
         <>
             {loggedIn &&
-                <IdentifyingTextOnHover text="cart">
-                    <button className=' flex items-center relative p-2  rounded-full  '
+                <abbr title="Cart">
+                    <button className=' flex items-center relative p-2 border rounded-lg  dark:border-[#2141d1bd] '
                         onClick={() => (handleClickOnCart())}
                     >
                         {document.documentElement.classList.contains('dark')
@@ -42,7 +41,7 @@ function cart({ loggedIn }: { loggedIn: boolean }) {
                             </span>
                         }
                     </button >
-                </IdentifyingTextOnHover>
+                </abbr>
             }
         </>
     )
