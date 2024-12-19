@@ -9,7 +9,6 @@ function CategorySearchPage() {
  
   return (
     <div>
-      category: {category}
       {/* category section according to the path or search*/}
       <Posts category={category} />
     </div>

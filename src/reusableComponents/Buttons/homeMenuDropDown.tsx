@@ -29,7 +29,7 @@ function HomeMenuDropDown({ loggedIn }: { loggedIn: boolean }) {
                 
                 {/* this willl render when user clik on menu icon */}
                 {showMenu
-                    && <div className={`fixed z-[55] border h-[92.7vh] ${slide ? "right-0" : "right-[-5rem]"} transition-all ease-in-out duration-1000 top-[8.2vh] w-fit p-4 flex-col space-y-[1rem] rounded-l-xl justify-between border-e bg-[#f0f5f7] dark:bg-[#1032521a] max-sm:top-[3rem] max-sm:h-[50vh] max-sm:dark:border-[#d4d5d613] border-r-0 `}>
+                    && <div className={`fixed z-[55] border h-[92.7vh] ${slide ? "right-0" : "right-[-5rem]"} transition-all ease-in-out duration-1000 top-[8.2vh] w-fit p-4 flex-col space-y-[1rem] rounded-l-xl justify-between  bg-[#f0f5f7] dark:bg-[#112031] max-sm:top-[3rem] max-sm:h-[50vh] dark:border-[#185ad3]  border-r-0 `}>
                         <ul className="type-none space-y-3 ">
                             {/* this will only render when  user is logInned */}
 
