@@ -26,22 +26,23 @@ Welcome to the **Poster Vault**! 🖼️ This is the frontend of an e-commerce p
 ---
 
 📂 Project Structure
-  📦 poster-vault-frontend
-   ┣ 📂 src
-   ┃ ┣ 📂 components   # Reusable UI components
-   ┃ ┣ 📂 pages        # Main pages (Home, Product, Cart, etc.)
-   ┃ ┣ 📂 redux        # Redux store & slices
-   ┃ ┣ 📂 hooks        # Custom React hooks
-   ┃ ┣ 📂 assets       # Images & static assets
-   ┃ ┗ 📂 styles       # Tailwind configurations
-   ┣ 📜 package.json
-   ┣ 📜 tailwind.config.js
-   ┣ 📜 tsconfig.json
-   ┗ 📜 README.md
+
+  📦 poster-vault-frontend<br>
+  ┣ 📂 src<br>
+   ┃ ┣ 📂 components   # Reusable UI components<br>
+   ┃ ┣ 📂 pages        # Main pages (Home, Product, Cart, etc.)<br>
+   ┃ ┣ 📂 redux        # Redux store & slices<br>
+   ┃ ┣ 📂 hooks        # Custom React hooks<br>
+   ┃ ┣ 📂 assets       # Images & static assets<br>
+   ┃ ┗ 📂 styles       # Tailwind configurations<br>
+   ┣ 📜 package.json<br>
+   ┣ 📜 tailwind.config.js<br>
+   ┣ 📜 tsconfig.json<br>
+   ┗ 📜 README.md<br>
 
 📸 Screenshots
 
-🛠️ Future Improvements
-  ✅ Implement wishlist functionality
-  ✅ Enhance SEO & performance optimizations
+🛠️ Future Improvements<br>
+  ✅ Implement wishlist functionality<br>
+  ✅ Enhance SEO & performance optimizations<br>
   ✅ Support for custom poster designs
