@@ -10,7 +10,11 @@ export default {
       'sm': '550px',// end point of large width mobiles
       'md': '1000px',//end point of tablet
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Comfortaa', 'serif'],
+      },
+    },
   },
   plugins: [],
 }

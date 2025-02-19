@@ -1,6 +1,10 @@
+:root{
+  font-family: "Fira Sans", serif;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

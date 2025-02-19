@@ -75,7 +75,7 @@ const Header: React.FC = () => {
                     <Link to={'/'}>
                         <img src="/fav.png" alt=" Site Logo  " className='h-[1.8rem] w-[1.5rem] ' />
                     </Link>
-                    <p className='max-sm:hidden'>Poster vault</p>
+                    <p className='max-sm:hidden '>Poster vault</p>
                 </span>
             </div>
             {/* Right side of header */}
