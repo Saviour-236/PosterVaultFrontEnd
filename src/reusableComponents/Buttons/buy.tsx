@@ -1,29 +1,10 @@
 import { useEffect, useState } from "react"
-import { Poster } from "../../Statemanagement/interfaces"
-function BuyButton({ product }: { product: Poster}) {
+import WorkingOnThisCard from "../cards/workingOnThisCard"
+function BuyButton() {
     const [isRendered, setIsRendered] = useState(false)
+    const [click, setClick] = useState(false)
     const handleClick = () => {
-        try{
-
-              fetch("localhost:3000/api/buy", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(product)
-            })
-            .then(res => {
-                if(res.ok){
-                res.json()
-                }
-                throw new Error("Failed to buy")
-            })
-            .then(data => {    
-                console.log(data)
-             })
-        }catch(err){
-            console.log(err)
-        }
+     setClick(!click)
     }
     useEffect(() => {
         setTimeout(() => {
@@ -40,8 +21,8 @@ function BuyButton({ product }: { product: Poster}) {
             >
                 Buy
             </button>
-            {/* notify card that tells i m working on this */}
-            {/* {clicked && <WorkingOnThisCard />} */}
+          
+            {click&& <WorkingOnThisCard />} 
         </>
     )
 }
