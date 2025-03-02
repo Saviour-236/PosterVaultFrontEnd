@@ -2,6 +2,7 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { toast } from "react-hot-toast";
 import { initializeUser } from "../../Statemanagement/Slices/userSlice";
 import { useDispatch } from "react-redux";
+import { baseAddress } from "../../baseAddress";
 function ContinueWithGoogle() {
     const dispatch = useDispatch();
     const clientId = "1098257020295-lqpr881ti28s4gnsefugupg4a5326k97.apps.googleusercontent.com";
@@ -12,7 +13,7 @@ function ContinueWithGoogle() {
             console.log("Google Login Success:", response.credential);
             
             // Send the token to your backend for verification
-            fetch("http://localhost:3000/auth/google", {
+            fetch(`${baseAddress}/auth/google`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ token: response.credential }),
