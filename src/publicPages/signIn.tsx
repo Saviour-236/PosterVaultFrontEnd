@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { baseAddress } from '../baseAddress';
 import { setToastValue } from '../Statemanagement/Slices/globelVariables';
 import { jwtDecode } from 'jwt-decode';
+import ContinueWithGoogle from '../reusableComponents/Buttons/continueWithGoogle';
 const SignInForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -95,7 +96,7 @@ const SignInForm = () => {
             />
           </div>
           <div className='flex p-2 justify-center'>
-            <button type="button"
+            {/* <button type="button"
               className="px-5 py-3 inline-flex items-center border rounded-lg text-[#333] text-base tracking-wider font-semibold  outline-none shadow-lg bg-gray-50 hover:bg-gray-100 active:bg-gray-50">
               <svg xmlns="http://www.w3.org/2000/svg" width="22px" fill="#fff" className="inline mr-3" viewBox="0 0 512 512">
                 <path fill="#fbbd00"
@@ -118,7 +119,8 @@ const SignInForm = () => {
                   data-original="#eb4132" />
               </svg>
               Continue with Google
-            </button>
+            </button> */}
+            <ContinueWithGoogle/>
           </div>
           {error && <p className="text-red-500 text-xs italic mb-4">{error}</p>}
           <div className="flex items-center justify-end">
