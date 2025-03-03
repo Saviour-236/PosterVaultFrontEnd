@@ -1,19 +1,21 @@
 import { useDispatch } from "react-redux";
 import { setToastValue } from "../../Statemanagement/Slices/globelVariables";
 import { clearUserReducer } from "../../Statemanagement/Slices/userSlice";
+import { useNavigate } from "react-router-dom";
 function logOutButton() {
     const dispatch= useDispatch();
+    const navigate = useNavigate();
     const handleLogOut = () => {
         localStorage.clear();
         dispatch(setToastValue({ type: "success", message: "Logged out successfully" }));
         dispatch(clearUserReducer());
         dispatch(setToastValue({ type: "success", message: "Please Visit again" }));
+        navigate("/")
     }
     return (
         <>
             <div className="pt-2">
                 <button 
-
                 className="flex items-center space-x-3 py-3 px-4 w-full leading-6 text-lg text-gray-600 focus:outline-none hover:bg-gray-100 rounded-md
                  dark:hover:bg-[#161655] dark:hover:shadow-md
                                 "

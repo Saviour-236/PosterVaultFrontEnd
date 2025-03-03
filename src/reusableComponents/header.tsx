@@ -35,10 +35,11 @@ const Header: React.FC = () => {
             };
         }
     }
-
     useEffect(() => {
         if (userState.userInfo) {
             setLoggedIn(true);
+        }else{
+            setLoggedIn(false);
         }
         // showing toast messages
         if (toastValue.message !== '') {

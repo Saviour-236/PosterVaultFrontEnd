@@ -8,19 +8,18 @@ function profileDropDownButton({loggedIn}: {loggedIn:boolean}) {
     const state = useSelector((state: RootState) => state.userSliceState);
     const handleMenuClick = () => {
         setShowDropDown(!showDropDown);
-    }
+    }                                 
     return (
         <>
-        {loggedIn &&
+        {loggedIn && state.userInfo &&
             <div className="dropdown  relative">
                 {/* Dropdown menu Icon or button */}
                 <button className=" flex items-center rounded   focus:btn-outline focus:text-orange-500 normal-case text-orange-500 "
                     onClick={handleMenuClick}>
                     <div className="w-9 h-9 border border-[#ffffff] rounded-full">
-                        {state.userInfo.profilePic !== ""
+                        {state.userInfo  &&  state?.userInfo?.profilePic !== ""
                             ? <img src={state.userInfo.profilePic} alt="Profile Pic" className="w-8 h-8 rounded-full" />
                             : <img src="https://avatars.githubusercontent.com/u/26052038?v=4" alt="Profile Pic avatar" className="w-8 h-8 rounded-full" />
-
                         }
                     </div>
                 </button>
@@ -34,19 +33,20 @@ function profileDropDownButton({loggedIn}: {loggedIn:boolean}) {
                             {/* profiele section like pic , name and , email */}
                             <div className="flex space-x-4 items-center p-4">
                                 <div className="flex mr-auto items-center space-x-4">
-                                    <img src={state.userInfo.profilePic} alt="Profile Pic" className="w-16 h-16 shrink-0 rounded-full" />
+
+                                    <img src={state.userInfo && state.userInfo.profilePic} alt="Profile Pic" className="w-16 h-16 shrink-0 rounded-full" />
                                     <div className="space-y-2 flex flex-col flex-1 truncate">
                                         <div className="relative leading-tight text-gray-900">
                                             <span className="flex">
                                                 <span className="truncate relative pr-8 text-[#0a0a0a]
                                                 dark:text-[#278cff]">
-                                                    {state.userInfo.firstName} {state.userInfo.lastName}
+                                                    {state.userInfo && state.userInfo.firstName} {state.userInfo && state.userInfo.lastName}
                                                 </span>
                                             </span>
                                         </div>
                                         <p className="font-normal text-xs leading-tight truncate
                                         dark:text-[#b7b6fc]
-                                        ">{state.userInfo.email}</p>
+                                        ">{state.userInfo && state.userInfo.email}</p>
                                     </div>
                                 </div>
                             </div>
