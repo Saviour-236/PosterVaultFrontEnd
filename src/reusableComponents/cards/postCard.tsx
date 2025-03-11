@@ -3,6 +3,7 @@ import {  useState } from "react";
 import { Poster } from "../../Statemanagement/interfaces";
 import AddToCart from "../Buttons/addToCart";
 import BuyButton from "../Buttons/buy";
+import DownloadButton from "../Buttons/downloadButton";
 interface Props {
     post: Poster;
 }
@@ -68,12 +69,13 @@ const PostCards: React.FC<Props> = ({ post }) => {
                 {/* like button */}
                 {
                     isLoaded &&
-                    <div className="absolute top-0 right-3">
+                    <div className="absolute flex gap-3 top-3 right-3">
                         <abbr title="Like">
                             <p className="text-[1.5rem] hover:cursor-pointer"
                                 onClick={handleLikeClick}
                             >{liked ? "❤️" : "🤍"} </p>
                         </abbr>
+                        <DownloadButton imgSrc={post.imageUrl} fileName={post.title} />
                     </div>
                 }
 
