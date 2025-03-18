@@ -43,8 +43,12 @@ const Posts = React.memo(({ category }: { category: string }) => {
         <>
             {category in state ? (
                 
-                <div className="min-w-fit  p-2">
-                    total results {state[category].length}
+                <div className="min-w-fit relative p-2">
+                   <div className=" flex justify-end px-2 ">
+                        <p className="shadow-lg px-[1rem] py-2 rounded-lg mb-3 dark:bg-[#00ff376e]">
+                            Total Results {state[category].length}
+                         </p> 
+                    </div> 
                     <Masonry
                         breakpointCols={breakpointColumns}
                         className="flex"
@@ -56,7 +60,13 @@ const Posts = React.memo(({ category }: { category: string }) => {
                     </Masonry>
                 </div>
             ) : (
-                loading && <p>Loading...</p>
+                loading 
+                && <div className='flex space-x-2 justify-center items-center bg-white h-screen dark:invert'>
+                    <span className='sr-only'>Loading...</span>
+                    <div className='h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+                    <div className='h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+                    <div className='h-8 w-8 bg-black rounded-full animate-bounce'></div>
+                </div>
             )}
         </>
     );

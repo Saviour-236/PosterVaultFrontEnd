@@ -8,7 +8,7 @@ import { useState } from "react";
       const blob = await response.blob(); // Convert to blob
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = fileName || "image.jpg";
+      link.download = fileName || "image.jpg";                                                         
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

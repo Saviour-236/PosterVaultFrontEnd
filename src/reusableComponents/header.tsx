@@ -70,13 +70,13 @@ const Header: React.FC = () => {
             <div className="flex  items-center min-w-fit mx-3  ">
 
                 <span className="flex space-x-2 text-xl font-bold dark:text-white
-                w-fit
+                w-fit items-center
                 max-sm:text-[0.7rem]
                 ">
                     <Link to={'/'}>
-                        <img src="/fav.png" alt=" Site Logo  " className='h-[1.8rem] w-[1.5rem] ' />
+                        <img src="/vaultLogo.png" alt=" Site Logo  " className='h-[2.5rem] w-[2.5rem] ' />
                     </Link>
-                    <p className='max-sm:hidden '>Poster vault</p>
+                    <p className='max-sm:hidden '>Poster Vault</p>
                 </span>
             </div>
             {/* Right side of header */}
