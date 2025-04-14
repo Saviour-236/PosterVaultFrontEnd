@@ -1,4 +1,4 @@
-<a href="mernstackpr1.netlify.app"> 🎨 Poster Vault - Frontend</a>
+<a href="[mernstackpr1.netlify.app](https://poster-vault-project-1.netlify.app/)"> 🎨 Poster Vault - Frontend</a>
 
 Welcome to the **Poster Vault**! 🖼️ This is the frontend of an e-commerce platform where users can browse, customize, and purchase posters. Built with **React, TypeScript, Tailwind CSS, and Redux**, it ensures a smooth and visually appealing shopping experience.
 
