@@ -1,6 +1,5 @@
 import { useState } from "react";
  const  DownloadButton = ({ imgSrc, fileName }:{imgSrc:string, fileName:string }) => {
-  console.log(imgSrc, fileName)
     const [downloaded, setDownloaded] = useState(false);
   
     const handleDownload = async () => {
