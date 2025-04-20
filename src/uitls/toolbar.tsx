@@ -3,6 +3,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import TextField from '@mui/material/TextField';
 import { FilterAction, Filters } from "../reusableComponents/posts";
 import { Box, OutlinedInput } from '@mui/material';
+import CategoriesButton from '../reusableComponents/Buttons/categoriesButton';
 
 interface ToolBarProps {
     filters: Filters;
@@ -12,8 +13,17 @@ interface ToolBarProps {
 const ToolBar = ({filters  , dispatchFilters }:ToolBarProps)  => {
 console.log("filters ", filters)
   return  (
-    <Box>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <Box sx={{padding:"10px" , display:'flex' , gap:"20px",justifyContent: 'flex-end' }}>
+        <OutlinedInput 
+        value={filters?.price?.min}
+        placeholder='Search here....'
+        onChange={(e:any) => {
+            dispatchFilters({ type: "MINPRICE", value: e.target.value?.toString() || "" });
+        }}
+        sx={{ borderRadius: '10px',}}
+        />
+        <CategoriesButton />
+        <LocalizationProvider dateAdapter={AdapterDayjs}  >
             <DatePicker
                 label="Start Date"
                 value={filters?.date?.startDate}
@@ -21,8 +31,18 @@ console.log("filters ", filters)
                     console.log("newValue " ,newValue.toString())
                     dispatchFilters({ type: "STARTDATE", value: newValue});
                 }}
+                sx={{
+                    '& label.MuiInputLabel-shrink': {
+                      fontSize: '16px',
+                      fontWeight: 700,
+                    //   paddingX:"5px"
+                    },
+                    '& .MuiOutlinedInput-root': {
+                    borderRadius: '10px',
+                    },
+                  }}
                 renderInput={(params:any) => <TextField {...params} />}
-            />
+             />
             <DatePicker
                 label="End Date"
                 value={filters?.date?.endDate}
@@ -30,14 +50,18 @@ console.log("filters ", filters)
                     dispatchFilters({ type: "ENDDATE", value: newValue });
                 }}
                 renderInput={(params:any) => <TextField {...params} />}
+                sx={{
+                    '& label.MuiInputLabel-shrink': {
+                      fontSize: '16px',
+                      fontWeight: 700,
+                    //   paddingX:"5    px"
+                    },
+                    '& .MuiOutlinedInput-root': {
+                    borderRadius: '10px',
+                    },
+                  }}
             />
         </LocalizationProvider>
-        <OutlinedInput 
-        value={filters?.price?.min}
-        onChange={(e:any) => {
-            dispatchFilters({ type: "MINPRICE", value: e.target.value?.toString() || "" });
-        }}
-        />
     </Box>
   )
  
