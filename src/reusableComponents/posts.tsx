@@ -87,7 +87,8 @@ export interface Filters {
       case "CATEGORIES":
         return {
           ...state,
-          categories: state.categories ? [...state.categories, action.value] : [action.value],
+          empty:false,
+          categories: state.categories ? [...state.categories, action.value.toLowerCase()] : [action.value.toLowerCase()],
         };
       default:
         return state;
@@ -100,16 +101,19 @@ export interface Filters {
 
         if (filters.date.startDate) {
             const start = new Date(filters.date.startDate);
-            filtered = filtered.filter(poster => new Date(poster?.date) >= start);
+            console.log("ghis is start date",start)
+            filtered = state.filter(poster => new Date(poster?.upLoadingDate) >= start);
         }
 
         if (filters.date.endDate) {
             const end = new Date(filters.date.endDate);
-            filtered = filtered.filter(poster => new Date(poster?.date) <= end);
+            filtered = filtered.filter(poster => new Date(poster?.upLoadingDate) <= end);
         }
 
         if (filters.categories && filters.categories.length > 0) {
-            filtered = filtered.filter(poster => filters.categories!.includes(poster.category));
+          console.log(filters.categories)
+            filtered = state.filter(poster =>  filters.categories?.includes(poster.category.toLowerCase()) );
+            console.log("this is filterd data according to the categories",filtered)
         }
 
         if (filters.price.min !== null) {
@@ -128,7 +132,6 @@ export interface Filters {
 
         return filtered;
     }
-
     return state;
 };
 
@@ -184,7 +187,7 @@ const Posts = React.memo(({ category }: { category: string }) => {
                 </>
             ) : (
                 loading && (
-                    <div className='flex space-x-2 justify-center items-center bg-white h-screen dark:invert'>
+                    <div className='flex space-x-2 justify-center items-center  h-screen dark:invert'>
                         <span className='sr-only'>Loading...</span>
                         <div className='h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.3s]'></div>
                         <div className='h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.15s]'></div>

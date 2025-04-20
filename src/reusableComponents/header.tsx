@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../Statemanagement/store';
 import CartButton from './Buttons/cartButton';
 import { Link } from 'react-router-dom';
-import CategoriesButton from './Buttons/categoriesButton';
 import toast, { Toaster } from 'react-hot-toast';
 import { setToastValue } from '../Statemanagement/Slices/globelVariables';
 import { initializeUser } from '../Statemanagement/Slices/userSlice';
@@ -83,7 +82,6 @@ const Header: React.FC = () => {
             <div className='items-center flex space-x-3 w-fit '>
 
                 {/* Categories Button  */}
-                <div className='max-sm:hidden'><CategoriesButton /></div>
 
                 {/* search bar */}
                 <SearchButton />

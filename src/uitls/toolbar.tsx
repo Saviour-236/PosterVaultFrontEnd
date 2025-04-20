@@ -1,6 +1,5 @@
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import TextField from '@mui/material/TextField';
 import { FilterAction, Filters } from "../reusableComponents/posts";
 import { Box, OutlinedInput } from '@mui/material';
 import CategoriesButton from '../reusableComponents/Buttons/categoriesButton';
@@ -11,9 +10,9 @@ interface ToolBarProps {
   }
 
 const ToolBar = ({filters  , dispatchFilters }:ToolBarProps)  => {
-console.log("filters ", filters)
+// console.log("filters ", filters)
   return  (
-    <Box sx={{padding:"10px" , display:'flex' , gap:"20px",justifyContent: 'flex-end' }}>
+    <Box sx={{padding:"10px" , display:'flex' , gap:"10px",justifyContent: 'flex-end' }}>
         <OutlinedInput 
         value={filters?.price?.min}
         placeholder='Search here....'
@@ -22,26 +21,30 @@ console.log("filters ", filters)
         }}
         sx={{ borderRadius: '10px',}}
         />
-        <CategoriesButton />
+        <CategoriesButton dispatchFilters={dispatchFilters}/>
         <LocalizationProvider dateAdapter={AdapterDayjs}  >
             <DatePicker
                 label="Start Date"
                 value={filters?.date?.startDate}
                 onChange={(newValue:any) => {
-                    console.log("newValue " ,newValue.toString())
-                    dispatchFilters({ type: "STARTDATE", value: newValue});
+                    dispatchFilters({ type: "STARTDATE", value: newValue.toString()});
                 }}
                 sx={{
                     '& label.MuiInputLabel-shrink': {
                       fontSize: '16px',
                       fontWeight: 700,
-                    //   paddingX:"5px"
+                      transform: 'translate(15px, -4px) scale(0.85)'
                     },
                     '& .MuiOutlinedInput-root': {
                     borderRadius: '10px',
+                    top: '5px',   // Move it up or down
+                    left: '5px',   
                     },
+                    '& .MuiInputBase-input': {
+                        padding: '10px',
+                        maxWidth:"80px"
+                    }
                   }}
-                renderInput={(params:any) => <TextField {...params} />}
              />
             <DatePicker
                 label="End Date"
@@ -49,16 +52,21 @@ console.log("filters ", filters)
                 onChange={(newValue:any) => {
                     dispatchFilters({ type: "ENDDATE", value: newValue });
                 }}
-                renderInput={(params:any) => <TextField {...params} />}
                 sx={{
                     '& label.MuiInputLabel-shrink': {
                       fontSize: '16px',
                       fontWeight: 700,
-                    //   paddingX:"5    px"
+                      transform: 'translate(15px, -4px) scale(0.85)'
                     },
                     '& .MuiOutlinedInput-root': {
                     borderRadius: '10px',
+                    top: '5px',   // Move it up or down
+                    left: '5px',     
                     },
+                    '& .MuiInputBase-input': {
+                        padding: '10px',
+                        maxWidth:"80px"
+                    }
                   }}
             />
         </LocalizationProvider>

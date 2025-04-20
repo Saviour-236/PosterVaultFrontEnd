@@ -1,24 +1,14 @@
 
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Dialog, Button, Card } from '@mui/material';
-function categoriesButton() {
-    const [show, setShow] = useState(false)
+import { FilterAction } from "../posts";
+function categoriesButton({ dispatchFilters }:{dispatchFilters: React.Dispatch<FilterAction>}) {
     const categories = ['ClassicArt', 'PopCultureIcons', 'MotivationalQuotes', 'NatureLandscapes', 'AbstractModernArt', 'vintageRetro', 'MoviesTvShows', 'MusicLegends', 'TravelDestinations', 'HistoricalMoments', 'SportsHeroes', 'AnimeManga', 'GamingUniverse', 'MinimalistDesigns', 'StreetArtGraffiti', 'FantasySciFi', 'ComicBookCharacters', 'TypographyCalligraphy', 'SpaceAstronomy', 'FamousPaintings']
-    const [height, setHeight] = useState(0)
     const [openDrawer , setOpenDrawer] = useState<boolean>(false)
     const handleClick= (categoryName:string)=>{
-        console.log("category name ",categoryName)
+        dispatchFilters({type:"CATEGORIES",value:categoryName})
     }
     const closeDrawer = () => (setOpenDrawer(false))
-    useEffect(() => {
-        if(window.innerWidth<640){
-            setHeight(show ? 400 : 0);
-        }else{
-            setHeight(show ? 110 : 0)
-        }
-        
-    }, [show])
-
     return (
         <>
             <Button variant="outlined" 
@@ -31,7 +21,7 @@ function categoriesButton() {
             <Dialog open={openDrawer}  onClose={closeDrawer}>
            <Card >
                 {categories.map((item, index) => {
-                        return <Button onClick={()=>handleClick(item)}>
+                        return <Button key={index} onClick={()=>handleClick(item)}>
                             {item}
                         </Button>
                 })}
